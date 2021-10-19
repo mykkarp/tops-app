@@ -1,48 +1,55 @@
 .button {
-  font-size: 1rem;
-  line-height: 1;
-  display: inline-block;
-  padding: 0.6rem;
-  cursor: pointer;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
-  transition: background 0.2s ease, color 0.2s ease;
+	display: inline-block;
+
+	padding: 0.6rem;
+
+	cursor: pointer;
+	transition: background 0.2s ease, color 0.2s ease;
+	text-align: center;
+
+	border: none;
+	border-radius: 5px;
+
+	font-size: 1rem;
+	line-height: 1;
 }
 
 .primary {
-  background-color: var(--primary);
-  color: var(--white);
+	color: var(--white);
+	background-color: var(--primary);
 }
 
 .primary:hover {
-  background-color: var(--primary-hover);
+	background-color: var(--primary-hover);
 }
 
 .ghost {
-  background-color: var(--white);
-  border: 1px solid var(--grey-light);
+	border: 1px solid var(--grey-light);
+	background-color: var(--white);
 }
 
 .ghost:hover {
-  background-color: var(--primary);
-  color: var(--white);
+	color: var(--white);
+	background-color: var(--primary);
 }
 
 .arrow {
-  display: inline-block;
-  margin: 0px 0px 0px 0.6rem;
-  transition: transform 0.2s ease;
+	display: inline-block;
+
+	margin: 0 0 0 0.6rem;
+
+	transition: transform 0.2s ease;
 }
 
 .arrow-down {
-  transform: rotate(90deg);
+	transform: rotate(90deg);
 }
 
 .button svg {
-  transition: fill 0.2s ease;
+	transition: fill 0.2s ease;
 }
 
-.primary svg, .ghost:hover svg {
-  fill: var(--white);
+.primary svg,
+.ghost:hover svg {
+	fill: var(--white);
 }
