@@ -19,7 +19,8 @@
 	background-color: var(--primary);
 }
 
-.primary:hover {
+.primary:hover,
+.primary:focus {
 	background-color: var(--primary-hover);
 }
 
@@ -28,9 +29,10 @@
 	background-color: var(--white);
 }
 
-.ghost:hover {
+.ghost:hover,
+.ghost:focus {
 	color: var(--white);
-	background-color: var(--primary);
+	background-color: var(--primary-hover);
 }
 
 .arrow {
@@ -50,6 +52,7 @@
 }
 
 .primary svg,
-.ghost:hover svg {
+.ghost:hover svg,
+.ghost:focus svg {
 	fill: var(--white);
 }

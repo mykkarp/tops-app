@@ -7,16 +7,16 @@ const Home: NextPage = () => {
       <Htag tag="h1">Tag</Htag>
       <Htag tag="h2">Tag</Htag>
       <Htag tag="h3">Tag</Htag>
-      <Button appearance="primary" arrow='right'>Узнать подробнее</Button>
+      <Button appearance="primary">Узнать подробнее</Button>
       <Button appearance="ghost" arrow='right'>Узнать подробнее</Button>
       <Ptag size="l">some text</Ptag>
       <Ptag>some text</Ptag>
       <Ptag size="s">some text</Ptag>
-      <Tag href="#" size='m' color='ghost'>Дизайн</Tag>
-      <Tag href="#" size='m' color='gray'>Дизайн</Tag>
-      <Tag href="#" size='m' color='green'>Дизайн</Tag>
-      <Tag href="#" size='m' color='primary'>Дизайн</Tag>
-      <Tag href="#" size='m' color='red'>Дизайн</Tag>
+      <Tag href="#" size='m' color='ghost'>Test</Tag>
+      <Tag href="#" size='m' color='gray'>Test</Tag>
+      <Tag href="#" size='m' color='green'>Test</Tag>
+      <Tag href="#" size='m' color='primary'>Test</Tag>
+      <Tag href="#" size='m' color='red'>Test</Tag>
     </div>
   )
 }

@@ -6,6 +6,11 @@
 	border-radius: 20px;
 }
 
+.tag a:hover,
+.tag a:focus {
+	text-decoration: underline;
+}
+
 .s {
 	font-size: 0.85rem;
 	line-height: 1;
