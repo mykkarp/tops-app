@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { Htag } from '../components';
+import { Htag, Button } from '../components';
 
 const Home: NextPage = () => {
   return (
@@ -7,6 +7,8 @@ const Home: NextPage = () => {
       <Htag tag="h1">Tag</Htag>
       <Htag tag="h2">Tag</Htag>
       <Htag tag="h3">Tag</Htag>
+      <Button appearance="primary" arrow='right'>Узнать подробнее</Button>
+      <Button appearance="ghost" arrow='right'>Узнать подробнее</Button>
     </div>
   )
 }
