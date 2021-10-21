@@ -40,11 +40,6 @@ export function Rating({ isEditable = false, rating, setRating, className, ...pr
     setRating(rating);
   }
 
-  const changeRatingDisplay = (rating: number) => {
-    if (!isEditable) return;
-    constructRating(rating);
-  }
-
   useEffect(() => {
     constructRating(rating);
   }, [rating]);
