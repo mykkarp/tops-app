@@ -9,6 +9,8 @@
     "@typescript-eslint/semi": [
       "warn"
     ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-empty-interface": [
       "error",
       {
@@ -20,6 +22,7 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:react-hooks/recommended"
   ]
 }

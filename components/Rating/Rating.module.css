@@ -1,0 +1,31 @@
+.rating {
+	height: 20px;
+	margin: 0 -2.5px;
+}
+
+.rating span {
+	display: inline-block;
+
+	height: 20px;
+}
+
+.star {
+	padding: 0 2.5px;
+}
+
+.star svg {
+	transition: fill 0.2s ease;
+}
+
+.filled svg {
+	fill: var(--primary);
+}
+
+.editable {
+	cursor: pointer;
+}
+
+.editable:focus svg,
+.editable:hover svg {
+	fill: var(--primary-hover);
+}
