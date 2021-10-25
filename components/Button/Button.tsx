@@ -1,4 +1,4 @@
-import IButtonProps from './Button.props';
+import IButtonProps from './IButton.props';
 import styles from "./Button.module.css";
 import cn from 'classnames';
 import ArrowIcon from './arrow.svg';

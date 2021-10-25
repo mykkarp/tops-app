@@ -1,4 +1,4 @@
-import IPtagProps from './Ptag.props';
+import IPtagProps from './IPtag.props';
 import styles from "./Ptag.module.css";
 import cn from 'classnames';
 

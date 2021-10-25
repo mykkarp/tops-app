@@ -1,4 +1,4 @@
-import IHtagProps from './Htag.props';
+import IHtagProps from './IHtag.props';
 import styles from "./Htag.module.css";
 import cn from 'classnames';
 

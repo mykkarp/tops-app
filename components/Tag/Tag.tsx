@@ -1,4 +1,4 @@
-import ITagProps from './Tag.props';
+import ITagProps from './ITag.props';
 import styles from "./Tag.module.css";
 import cn from 'classnames';
 
