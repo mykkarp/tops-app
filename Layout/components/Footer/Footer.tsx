@@ -4,8 +4,8 @@ import cn from 'classnames';
 
 export function Footer({ ...props }: IFooterProps): JSX.Element {
   return (
-    <div {...props}>
+    <footer {...props}>
       Footer
-    </div>
+    </footer>
   );
 }

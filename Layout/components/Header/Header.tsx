@@ -4,8 +4,8 @@ import cn from 'classnames';
 
 export function Header({ ...props }: IHeaderProps): JSX.Element {
   return (
-    <div {...props}>
+    <header {...props}>
       Header
-    </div>
+    </header>
   );
 }
