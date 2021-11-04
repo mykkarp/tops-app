@@ -1,6 +1,5 @@
 import ILayoutProps from './ILayout.props';
 import styles from "./Layout.module.css";
-import cn from 'classnames';
 import { Footer, Header, Sidebar } from './components';
 import { FunctionComponent } from 'react';
 
