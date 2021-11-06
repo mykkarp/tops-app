@@ -1,0 +1,46 @@
+.menu {}
+
+/* first level */
+
+.firstLevelListList {
+  display: grid;
+}
+
+.firstLevelList li {}
+
+.firstLevelList li a {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.firstLevelList li.firstLevelActive a {}
+
+/* second level */
+
+.secondLevel {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+}
+
+.secondLevelLine {}
+
+.secondLevelList {}
+
+.secondLevelList li {}
+
+.secondLevelList li button {}
+
+.secondLevelList li.secondLevelActive button {}
+
+/* third level */
+
+.thirdLevelList {}
+
+.thirdLevelList li {}
+
+.thirdLevelList li a {}
+
+.thirdLevelList li.thirdLevelActive a {}
