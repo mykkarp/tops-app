@@ -24,15 +24,6 @@ const Home = ({ menu, firstCategory }: HomeProps): JSX.Element => {
       <Tag href="#" size='m' color='primary'>Test</Tag>
       <Tag href="#" size='m' color='red'>Test</Tag>
       <Rating rating={rating} isEditable setRating={setRating} />
-      <ul>
-        {menu.map((menuItem, index) => {
-          return (
-            <li key={index}>
-              {menuItem._id.secondCategory}
-            </li>
-          )
-        })}
-      </ul>
     </>
   )
 }

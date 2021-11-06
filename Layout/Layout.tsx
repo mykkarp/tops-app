@@ -2,6 +2,7 @@ import ILayoutProps from './ILayout.props';
 import styles from "./Layout.module.css";
 import { Footer, Header, Sidebar } from './components';
 import { FunctionComponent } from 'react';
+import { AppProvider, IAppContext } from '../contexts/app.context';
 
 function Layout({ children }: ILayoutProps): JSX.Element {
   return (
@@ -16,12 +17,14 @@ function Layout({ children }: ILayoutProps): JSX.Element {
   );
 }
 
-export function withLayout<T extends Record<string, unknown>>(Component: FunctionComponent<T>) {
+export function withLayout<T extends IAppContext>(Component: FunctionComponent<T>) {
   return function withLayoutComponent(props: T): JSX.Element {
     return (
-      <Layout>
-        <Component {...props} />
-      </Layout>
+      <AppProvider menu={props.menu} firstCategory={props.firstCategory}>
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      </AppProvider>
     )
   }
 }
