@@ -10,19 +10,14 @@ const Home = ({ menu, firstCategory }: HomeProps): JSX.Element => {
 
   return (
     <>
-      <Htag tag="h1">Tag</Htag>
-      <Htag tag="h2">Tag</Htag>
-      <Htag tag="h3">Tag</Htag>
+      <Htag tag="h1">Тэг</Htag>
       <Button appearance="primary">Узнать подробнее</Button>
-      <Button appearance="ghost" arrow='right'>Узнать подробнее</Button>
-      <Ptag size="l">some text</Ptag>
-      <Ptag>some text</Ptag>
-      <Ptag size="s">some text</Ptag>
-      <Tag href="#" size='m' color='ghost'>Test</Tag>
-      <Tag href="#" size='m' color='gray'>Test</Tag>
-      <Tag href="#" size='m' color='green'>Test</Tag>
-      <Tag href="#" size='m' color='primary'>Test</Tag>
-      <Tag href="#" size='m' color='red'>Test</Tag>
+      <Ptag size="s">Текст</Ptag>
+      <Tag href="#" size='m' color='ghost'>Тест</Tag>
+      <Tag href="#" size='m' color='gray'>Тест</Tag>
+      <Tag href="#" size='m' color='green'>Тест</Tag>
+      <Tag href="#" size='m' color='primary'>Тест</Tag>
+      <Tag href="#" size='m' color='red'>Тест</Tag>
       <Rating rating={rating} isEditable setRating={setRating} />
     </>
   )

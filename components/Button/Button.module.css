@@ -1,15 +1,11 @@
 .button {
 	display: inline-block;
-
 	padding: 0.6rem;
-
 	cursor: pointer;
 	transition: background 0.2s ease, color 0.2s ease;
 	text-align: center;
-
 	border: none;
 	border-radius: 5px;
-
 	font-size: 1rem;
 	line-height: 1;
 }
@@ -19,8 +15,7 @@
 	background-color: var(--primary);
 }
 
-.primary:hover,
-.primary:focus {
+.primary:hover, .primary:focus {
 	background-color: var(--primary-hover);
 }
 
@@ -29,17 +24,14 @@
 	background-color: var(--white);
 }
 
-.ghost:hover,
-.ghost:focus {
+.ghost:hover, .ghost:focus {
 	color: var(--white);
 	background-color: var(--primary-hover);
 }
 
 .arrow {
 	display: inline-block;
-
 	margin: 0 0 0 0.6rem;
-
 	transition: transform 0.2s ease;
 }
 
@@ -51,8 +43,6 @@
 	transition: fill 0.2s ease;
 }
 
-.primary svg,
-.ghost:hover svg,
-.ghost:focus svg {
+.primary svg, .ghost:hover svg, .ghost:focus svg {
 	fill: var(--white);
 }
