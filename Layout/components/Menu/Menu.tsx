@@ -8,6 +8,9 @@ import BooksIcon from './Icons/books.svg';
 import ProductsIcon from './Icons/products.svg';
 import ArrowIcon from './Icons/arrow.svg';
 import { TopLevelCategory } from '../../../interfaces/toppage.interface';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const firstLevelMenu: FirstLevelMenuItem[] = [
   { route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
@@ -18,6 +21,7 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 
 export function Menu(): JSX.Element {
   const { menu, setMenu, firstCategory } = useAppContext();
+  const router = useRouter();
 
   const buildFirstLevel = () => {
     return (
@@ -27,10 +31,12 @@ export function Menu(): JSX.Element {
             <li key={menu.route} className={cn(styles.firstLevelLI, {
               [styles.firstLevelActive]: menu.id === firstCategory,
             })}>
-              <a href={`/${menu.route}`}>
-                {menu.icon}
-                {menu.name}
-              </a>
+              <Link href={`/${menu.route}`}>
+                <a>
+                  {menu.icon}
+                  {menu.name}
+                </a>
+              </Link>
               {menu.id === firstCategory && buildSecondLevel(menu.route)}
             </li>
           )
@@ -52,17 +58,25 @@ export function Menu(): JSX.Element {
         </div>
         <ul className={styles.secondLevelList}>
           {menu.map((menuItem) => {
+            const toggleMenuItem = () => {
+              console.log("yes");
+              console.log(menuItem);
+
+              menuItem.isOpen = !menuItem.isOpen;
+            }
+
             return (
               <li key={menuItem._id.secondCategory} className={cn(styles.secondLevelLI, {
-                [styles.secondLevelLIOpen]: menuItem.isOpen
+                [styles.secondLevelLIOpen]: menuItem.isOpen,
               })}>
-                <button> {/*temp*/}
+                <button onClick={toggleMenuItem}>
                   {menuItem._id.secondCategory}
                   <span className={styles.arrow}>
                     <ArrowIcon />
                   </span>
                 </button>
                 {menuItem.isOpen && buildThirdLevel(menuItem.pages, route)}
+                {/* {buildThirdLevel(menuItem.pages, route)} */}
               </li>
             )
           })
@@ -78,9 +92,9 @@ export function Menu(): JSX.Element {
         {pages.map((page) => {
           return (
             <li key={page.alias} className={cn(styles.thirdLevelLI, {
-              [styles.thirdLevelCurrentCategory]: false // temp
+              [styles.thirdLevelCurrentCategory]: `/${route}/${page.alias}` === router.asPath
             })}>
-              <a href={`${route}/${page.alias}`}>{page.category}</a>
+              <Link href={`/${route}/${page.alias}`}><a>{page.category}</a></Link>
             </li>
           )
         })}
