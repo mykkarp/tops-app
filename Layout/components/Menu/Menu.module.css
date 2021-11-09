@@ -84,19 +84,18 @@
 }
 
 .secondLevelLIOpen button .arrow {
-  transform: translateY(-0.6rem) rotate(90deg);
-  opacity: 0;
+  transform: rotate(90deg);
+  opacity: 1;
 }
 
 .secondLevelLIOpen button:hover .arrow, .secondLevelLIOpen button:focus .arrow {
-  transform: translateY(0) rotate(90deg);
-  opacity: 1;
+  transform: rotate(90deg);
 }
 
 /* third level */
 
 .thirdLevelList {
-  margin: 10px 0px 0px 0px;
+  margin: 10px 0px 0px 20px;
   display: grid;
   gap: 10px;
 }

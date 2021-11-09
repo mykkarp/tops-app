@@ -7,6 +7,7 @@ import ServicesIcon from './Icons/services.svg';
 import BooksIcon from './Icons/books.svg';
 import ProductsIcon from './Icons/products.svg';
 import ArrowIcon from './Icons/arrow.svg';
+import LockIcon from './Icons/lock.svg';
 import { TopLevelCategory } from '../../../interfaces/toppage.interface';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -22,6 +23,15 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 export function Menu(): JSX.Element {
   const { menu, setMenu, firstCategory } = useAppContext();
   const router = useRouter();
+
+  const toggleSecondLevel = (secondCategory: string) => {
+    setMenu && setMenu(menu.map((menuItem) => {
+      if (menuItem._id.secondCategory === secondCategory) {
+        menuItem.isOpen = !menuItem.isOpen;
+      }
+      return menuItem
+    }));
+  }
 
   const buildFirstLevel = () => {
     return (
@@ -58,18 +68,17 @@ export function Menu(): JSX.Element {
         </div>
         <ul className={styles.secondLevelList}>
           {menu.map((menuItem) => {
-            const toggleMenuItem = () => {
-              console.log("yes");
-              console.log(menuItem);
+            const isMenuItemRouted = menuItem.pages.map((page) => page.alias).includes(router.asPath.split('/')[2]);
 
-              menuItem.isOpen = !menuItem.isOpen;
+            if (isMenuItemRouted) {
+              menuItem.isOpen = true;
             }
 
             return (
               <li key={menuItem._id.secondCategory} className={cn(styles.secondLevelLI, {
                 [styles.secondLevelLIOpen]: menuItem.isOpen,
               })}>
-                <button onClick={toggleMenuItem}>
+                <button onClick={() => toggleSecondLevel(menuItem._id.secondCategory)}>
                   {menuItem._id.secondCategory}
                   <span className={styles.arrow}>
                     <ArrowIcon />
