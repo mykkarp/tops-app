@@ -1,24 +1,11 @@
 import styles from "./Menu.module.css";
 import cn from 'classnames';
 import { useAppContext } from '../../../contexts/app.context';
-import { FirstLevelMenuItem, PageItem } from '../../../interfaces/menu.interface';
-import CoursesIcon from './Icons/courses.svg';
-import ServicesIcon from './Icons/services.svg';
-import BooksIcon from './Icons/books.svg';
-import ProductsIcon from './Icons/products.svg';
+import { PageItem } from '../../../interfaces/menu.interface';
 import ArrowIcon from './Icons/arrow.svg';
-import LockIcon from './Icons/lock.svg';
-import { TopLevelCategory } from '../../../interfaces/toppage.interface';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-  { route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
-  { route: 'services', name: 'Сервисы', icon: <ServicesIcon />, id: TopLevelCategory.Services },
-  { route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevelCategory.Books },
-  { route: 'products', name: 'Товары', icon: <ProductsIcon />, id: TopLevelCategory.Products },
-]
+import { firstLevelMenu } from '../../../helpers';
 
 export function Menu(): JSX.Element {
   const { menu, setMenu, firstCategory } = useAppContext();
@@ -85,7 +72,6 @@ export function Menu(): JSX.Element {
                   </span>
                 </button>
                 {menuItem.isOpen && buildThirdLevel(menuItem.pages, route)}
-                {/* {buildThirdLevel(menuItem.pages, route)} */}
               </li>
             )
           })
