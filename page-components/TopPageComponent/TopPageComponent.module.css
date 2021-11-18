@@ -1,0 +1,11 @@
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  justify-items: start;
+  align-items: end;
+  gap: 20px;
+}
+
+.vacancies {
+  display: grid;
+}

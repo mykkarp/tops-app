@@ -1,11 +1,11 @@
 import styles from "./Menu.module.css";
 import cn from 'classnames';
-import { useAppContext } from '../../../contexts/app.context';
-import { PageItem } from '../../../interfaces/menu.interface';
 import ArrowIcon from './Icons/arrow.svg';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { firstLevelMenu } from '../../../helpers';
+import { useAppContext } from '../../../../contexts/app.context';
+import { firstLevelMenu } from '../../../../helpers';
+import { PageItem } from '../../../../interfaces/menu.interface';
 
 export function Menu(): JSX.Element {
   const { menu, setMenu, firstCategory } = useAppContext();
@@ -98,8 +98,8 @@ export function Menu(): JSX.Element {
   }
 
   return (
-    <div className={styles.menu}>
+    <nav className={styles.menu}>
       {buildFirstLevel()}
-    </div>
+    </nav>
   );
 }
