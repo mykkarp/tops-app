@@ -1,0 +1,13 @@
+.wrapper {
+	margin: 0px 0px 50px 0px;
+}
+
+.wrapper h3 {
+	margin: 0px 0px 20px 0px;
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}

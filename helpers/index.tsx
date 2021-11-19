@@ -11,3 +11,7 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
   { route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevelCategory.Books },
   { route: 'products', name: 'Товары', icon: <ProductsIcon />, id: TopLevelCategory.Products },
 ]
+
+export const toLocalNum = (number: number): string => {
+  return number.toLocaleString('en-US').replace(',', ' ');
+}
