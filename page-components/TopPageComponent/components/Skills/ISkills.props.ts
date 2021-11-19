@@ -1,6 +1,3 @@
-import { TopPageAdvantage } from '../../../../interfaces/toppage.interface';
-
-
-export default interface IBenefitsProps {
-  advantages: TopPageAdvantage[]
+export default interface ISkillsProps {
+  skills: string[];
 }

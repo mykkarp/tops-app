@@ -1,8 +1,8 @@
 import ISkillsProps from './ISkills.props';
 import styles from "./Skills.module.css";
-import { Htag, Ptag, Tag } from '../../../../components';
+import { Htag, Tag } from '../../../../components';
 
-export function Skills({ skills }: ISkills): JSX.Element {
+export function Skills({ skills }: ISkillsProps): JSX.Element {
   return (
     <section className={styles.wrapper}>
       <Htag tag='h3'>Получаемые навыки</Htag>
@@ -17,8 +17,4 @@ export function Skills({ skills }: ISkills): JSX.Element {
       </div>
     </section>
   );
-}
-
-interface ISkills {
-  skills: string[];
 }
