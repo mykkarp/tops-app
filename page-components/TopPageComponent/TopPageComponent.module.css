@@ -1,11 +1,8 @@
 .header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  justify-items: start;
-  align-items: end;
-  gap: 20px;
-}
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	justify-items: start;
 
-.seoText {
-  margin: 0px 0px 30px 0px;
+	align-items: center;
+	gap: 20px;
 }

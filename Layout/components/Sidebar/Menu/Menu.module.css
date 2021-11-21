@@ -1,117 +1,140 @@
-.menu {}
-
 /* first level */
 
 .firstLevelList {
-  display: grid;
-  gap: 20px;
+	display: grid;
+	gap: 20px;
 }
 
 .firstLevelLI>a {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 20px;
-  align-items: center;
-  font-weight: 500;
-  font-size: 1.28rem;
-  line-height: 1.71rem;
-  color: var(--gray-dark);
-  transition: 0.2s color ease;
+	display: grid;
+	align-items: center;
+
+	transition: 0.2s color ease;
+
+	color: var(--gray-dark);
+
+	font-size: 1.28rem;
+	font-weight: 500;
+	line-height: 1.71rem;
+	grid-template-columns: 24px 1fr;
+	gap: 20px;
 }
 
-.firstLevelActive>a, .firstLevelLI>a:hover, .firstLevelLI>a:focus {
-  color: var(--primary);
+.firstLevelActive>a,
+.firstLevelLI>a:hover,
+.firstLevelLI>a:focus {
+	color: var(--primary);
 }
 
 .firstLevelLI>a svg {
-  transition: 0.2s fill ease;
+	transition: 0.2s fill ease;
 }
 
-.firstLevelActive>a svg, .firstLevelLI>a:hover svg, .firstLevelLI>a:focus svg {
-  fill: var(--primary);
+.firstLevelActive>a svg,
+.firstLevelLI>a:hover svg,
+.firstLevelLI>a:focus svg {
+	fill: var(--primary);
 }
 
 /* second level */
 
 .secondLevelBlock {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 20px;
-  margin: 15px 0 0 0;
+	display: grid;
+	grid-template-columns: 24px 1fr;
+	gap: 20px;
+
+	margin: 15px 0 0 0;
 }
 
 .secondLevelList {
-  display: grid;
-  gap: 10px;
-  padding: 10px 0;
+	display: grid;
+	gap: 10px;
+
+	padding: 10px 0;
 }
 
 .secondLevelLI button {
-  font-weight: 300;
-  font-size: 0.85rem;
-  line-height: 1.14rem;
-  color: var(--gray-dark);
-  text-transform: uppercase;
-  background-color: transparent;
-  transition: 0.2s color ease;
-  width: 100%;
-  text-align: left;
+	width: 100%;
+
+	transition: 0.2s color ease;
+	text-align: left;
+	text-transform: uppercase;
+
+	color: var(--gray-dark);
+	background-color: transparent;
+
+	font-size: 0.85rem;
+	font-weight: 300;
+	line-height: 1.14rem;
 }
 
 .secondLevelLI button .arrow {
-  display: inline-block;
-  margin: 0 0 0 0.6rem;
-  transform: translateX(-0.6rem);
-  opacity: 0;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+	display: inline-block;
+
+	margin: 0 0 0 0.6rem;
+
+	transition: transform 0.2s ease, opacity 0.2s ease;
+	transform: translateX(-0.6rem);
+
+	opacity: 0;
 }
 
 .secondLevelLI button .arrow svg {
-  transition: fill 0.2s ease;
+	transition: fill 0.2s ease;
 }
 
-.secondLevelLI button:hover, .secondLevelLI button:focus {
-  color: var(--primary);
+.secondLevelLI button:hover,
+.secondLevelLI button:focus {
+	color: var(--primary);
 }
 
-.secondLevelLI button:hover .arrow, .secondLevelLI button:focus .arrow {
-  transform: translateX(0);
-  opacity: 1;
+.secondLevelLI button:hover .arrow,
+.secondLevelLI button:focus .arrow {
+	transform: translateX(0);
+
+	opacity: 1;
 }
 
-.secondLevelLI button:hover .arrow svg, .secondLevelLI button:focus .arrow svg {
-  fill: var(--primary);
+.secondLevelLI button:hover .arrow svg,
+.secondLevelLI button:focus .arrow svg {
+	fill: var(--primary);
 }
 
 .secondLevelLIOpen button .arrow {
-  transform: rotate(90deg);
-  opacity: 1;
+	transform: rotate(90deg);
+
+	opacity: 1;
 }
 
-.secondLevelLIOpen button:hover .arrow, .secondLevelLIOpen button:focus .arrow {
-  transform: rotate(90deg);
+.secondLevelLIOpen button:hover .arrow,
+.secondLevelLIOpen button:focus .arrow {
+	transform: rotate(90deg);
 }
 
 /* third level */
 
 .thirdLevelList {
-  margin: 10px 0px 0px 20px;
-  display: grid;
-  gap: 10px;
+	display: grid;
+
+	margin: 10px 0 0 20px;
+	gap: 10px;
 }
 
 .thirdLevelLI a {
-  font-weight: bold;
-  font-size: 1rem;
-  line-height: 1.35rem;
-  color: var(--gray-dark);
-  transition: 0.2s color ease;
+	transition: 0.2s color ease;
+
+	color: var(--gray-dark);
+
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 1.35rem;
 }
 
-.thirdLevelLI a:hover, .thirdLevelLI a:focus {
-  color: var(--primary);
+.thirdLevelLI a:hover,
+.thirdLevelLI a:focus {
+	color: var(--primary);
 }
 
 .thirdLevelCurrentCategory a {
-  color: var(--primary);
+	color: var(--primary);
 }

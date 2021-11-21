@@ -1,15 +1,16 @@
 .wrapper {
 	display: grid;
-	gap: 0 30px;
+	gap: 30px;
 	grid-template-columns: auto 230px minmax(320px, 1200px) auto;
-	padding: 34px 0px 0px 0px;
+
 	min-height: 100vh;
 	grid-template-rows: auto 1fr auto;
-	grid-template-areas: ". sidebar topbar ." ". sidebar body ." "footer footer footer footer";
+	grid-template-areas: ". topbar topbar ."". sidebar body .""footer footer footer footer";
 }
 
 .topbar {
 	grid-area: topbar;
+
 	display: none;
 }
 
@@ -27,12 +28,14 @@
 
 @media screen and (max-width: 720px) {
 	.wrapper {
-		grid-template-columns: minmax(320px, 720px);
-		grid-template-areas: "topbar" "body" "footer";
+		grid-template-columns: auto minmax(320px, 720px) auto;
+		grid-template-areas: ". topbar ."". body .""footer footer footer";
 	}
+
 	.sidebar {
 		display: none !important;
 	}
+
 	.topbar {
 		display: block;
 	}

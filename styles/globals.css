@@ -7,7 +7,7 @@
 	--gray-light: #EBEBEB;
 	--white: white;
 	--primary: #7653FC;
-	--primary-hover: #4a2acc;
+	--primary-hover: #4A2ACC;
 	--tomato: #FC836D;
 	--green: #1DC37E;
 	--green-light: #C8F8E4;
@@ -19,6 +19,7 @@
 body {
 	color: var(--black);
 	background: #F5F6F8;
+
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -27,37 +28,49 @@ body {
 * {
 	margin: 0;
 	padding: 0;
+
 	border: 0;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-:focus, :active {
+:focus,
+:active {
 	outline: none;
 }
 
-a:focus, a:active {
+a:focus,
+a:active {
 	outline: none;
 }
 
-nav, footer, header, aside {
+nav,
+footer,
+header,
+aside {
 	display: block;
 }
 
-html, body {
+html,
+body {
 	width: 100%;
 	height: 100%;
+
 	font-size: 14px;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
 
-input, button, textarea {
+input,
+button,
+textarea {
 	font-family: inherit;
 }
 
@@ -71,11 +84,14 @@ button {
 
 button::-moz-focus-inner {
 	padding: 0;
+
 	border: 0;
 }
 
-a, a:visited {
+a,
+a:visited {
 	text-decoration: none;
+
 	color: inherit;
 }
 
@@ -91,7 +107,12 @@ img {
 	vertical-align: top;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-size: inherit;
 	font-weight: 400;
 }
