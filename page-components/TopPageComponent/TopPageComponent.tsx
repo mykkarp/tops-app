@@ -1,19 +1,28 @@
-import { Htag, Ptag, Tag } from '../../components';
+import { Htag, Tag } from '../../components';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import styles from './TopPageComponent.module.css';
-import { Vacancies, Advantages, Skills, SeoText } from './components';
+import { Vacancies, Advantages, Skills, SeoText, Sort } from './components';
 import { TopLevelCategory } from '../../interfaces/toppage.interface';
+import { SortEnum, sortActionTypes } from './components/Sort/sort.actions';
+import { sortReducer } from './components/Sort/sort.reducer';
+import { useReducer } from 'react';
 
 export function TopPageComponent({ page, products, firstCategory }: TopPageComponentProps): JSX.Element {
+  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
+
+  const setSort = (action: sortActionTypes) => {
+    dispatchSort(action);
+  }
+
   return (
     <>
       <header className={styles.header}>
         <Htag tag='h1'>{page.title}</Htag>
         {products && <Tag color='gray' size='m'>{products.length}</Tag>}
-        <span>Сортировка</span>
+        <Sort sort={sort} setSort={setSort} />
       </header>
       <section>
-        {products && products.map((product) => {
+        {sortedProducts && sortedProducts.map((product) => {
           return (
             <div key={product._id}>
               {product.title}

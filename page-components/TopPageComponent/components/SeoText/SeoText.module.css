@@ -43,7 +43,3 @@
 .seo ol li {
 	list-style: decimal !important;
 }
-
-.seo p {
-	color: var(--primary);
-}
