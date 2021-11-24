@@ -4,10 +4,10 @@
 	margin: 0 -2.5px;
 }
 
-.rating span {
-	display: inline-block;
+.rating button {
+	cursor: default;
 
-	height: 20px;
+	background-color: transparent;
 }
 
 .star {
@@ -22,7 +22,7 @@
 	fill: var(--primary);
 }
 
-.editable {
+button.editable {
 	cursor: pointer;
 }
 

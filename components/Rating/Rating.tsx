@@ -11,7 +11,8 @@ export function Rating({ isEditable = false, rating, setRating, className, ...pr
   const constructRating = (currentRating: number) => {
     const updatedArray = ratingArray.map((_, index: number) => {
       return (
-        <span
+        <button
+          type='button'
           className={cn(styles.star, {
             [styles.filled]: index < currentRating,
             [styles.editable]: isEditable,
@@ -21,7 +22,7 @@ export function Rating({ isEditable = false, rating, setRating, className, ...pr
           onKeyDown={(event: KeyboardEvent<HTMLSpanElement>) => isEditable && onSpaceHandler(index + 1, event)}
         >
           <StarIcon />
-        </span>
+        </button>
       )
     });
 

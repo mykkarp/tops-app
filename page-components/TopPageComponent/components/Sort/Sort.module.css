@@ -1,26 +1,31 @@
 .sort {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: end;
-  gap: 20px 40px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: end;
+	gap: 20px 40px;
 }
 
 .sort button {
-  background-color: transparent;
-  font-size: 1.14rem;
-  line-height: 1.57rem;
+	text-align: right;
+
+	background-color: transparent;
+
+	font-size: 1.14rem;
+	line-height: 1.57rem;
 }
 
 .sort svg {
-  display: none;
+	display: none;
 }
 
 .active svg {
-  display: inline;
-  margin: 0px 8px 0px 0px;
+	display: inline;
+
+	margin: 0 8px 0 0;
 }
 
 .active {
-  font-weight: bold;
-  color: var(--primary);
+	color: var(--primary);
+
+	font-weight: bold;
 }

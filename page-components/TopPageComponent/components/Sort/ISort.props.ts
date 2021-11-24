@@ -1,6 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { sortActionTypes, SortEnum } from './sort.actions';
 
 export default interface ISortProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   sort: SortEnum;
-  setSort: (sort: SortEnum) => void;
+  setSort: (action: sortActionTypes) => void;
 }

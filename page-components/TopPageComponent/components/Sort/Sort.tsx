@@ -11,6 +11,7 @@ export function Sort({ sort, setSort, className, ...props }: ISortProps): JSX.El
       {...props}
     >
       <button
+        type='button'
         onClick={() => setSort(ratingSortAction())}
         className={cn({
           [styles.active]: sort === SortEnum.Rating,
@@ -19,6 +20,7 @@ export function Sort({ sort, setSort, className, ...props }: ISortProps): JSX.El
         <SortIcon />По рейтингу
       </button>
       <button
+        type='button'
         onClick={() => setSort(priceSortAction())}
         className={cn({
           [styles.active]: sort === SortEnum.Price,

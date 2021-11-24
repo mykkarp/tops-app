@@ -5,7 +5,7 @@
 	gap: 20px;
 }
 
-.firstLevelLI>a {
+.firstLevelLI > a {
 	display: grid;
 	align-items: center;
 
@@ -20,19 +20,19 @@
 	gap: 20px;
 }
 
-.firstLevelActive>a,
-.firstLevelLI>a:hover,
-.firstLevelLI>a:focus {
+.firstLevelActive > a,
+.firstLevelLI > a:hover,
+.firstLevelLI > a:focus {
 	color: var(--primary);
 }
 
-.firstLevelLI>a svg {
+.firstLevelLI > a svg {
 	transition: 0.2s fill ease;
 }
 
-.firstLevelActive>a svg,
-.firstLevelLI>a:hover svg,
-.firstLevelLI>a:focus svg {
+.firstLevelActive > a svg,
+.firstLevelLI > a:hover svg,
+.firstLevelLI > a:focus svg {
 	fill: var(--primary);
 }
 

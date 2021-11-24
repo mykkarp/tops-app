@@ -65,7 +65,7 @@ export function Menu(): JSX.Element {
               <li key={menuItem._id.secondCategory} className={cn(styles.secondLevelLI, {
                 [styles.secondLevelLIOpen]: menuItem.isOpen,
               })}>
-                <button onClick={() => toggleSecondLevel(menuItem._id.secondCategory)}>
+                <button type='button' onClick={() => toggleSecondLevel(menuItem._id.secondCategory)}>
                   {menuItem._id.secondCategory}
                   <span className={styles.arrow}>
                     <ArrowIcon />
