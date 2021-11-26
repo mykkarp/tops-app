@@ -1,18 +1,19 @@
-.p {
-	color: var(--black);
+.search {
+	position: relative;
+
+	width: 100%;
 }
 
-.s {
-	font-size: 1rem;
-	line-height: 1.71rem;
+.input {
+	width: 100%;
 }
 
-.m {
-	font-size: 1.14rem;
-	line-height: 1.71rem;
-}
+.button {
+	position: absolute;
+	top: 3px;
+	right: 2px;
 
-.l {
-	font-size: 1.28rem;
-	line-height: 2.07rem;
+	width: 30px;
+	height: 30px;
+	padding: 7px;
 }
