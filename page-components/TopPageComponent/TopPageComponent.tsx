@@ -1,4 +1,4 @@
-import { Htag, Tag } from '../../components';
+import { Htag, Product, Tag } from '../../components';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import styles from './TopPageComponent.module.css';
 import { Vacancies, Advantages, Skills, SeoText, Sort } from './components';
@@ -22,13 +22,7 @@ export function TopPageComponent({ page, products, firstCategory }: TopPageCompo
         <Sort sort={sort} setSort={setSort} />
       </header>
       <section>
-        {sortedProducts && sortedProducts.map((product) => {
-          return (
-            <div key={product._id}>
-              {product.title}
-            </div>
-          )
-        })}
+        {sortedProducts && sortedProducts.map((product) => <Product key={product._id} product={product} />)}
       </section>
       {firstCategory === TopLevelCategory.Courses && page.hh && <Vacancies {...page.hh} category={page.category} />}
       {page.advantages && page.advantages.length > 0 && page.advantages[0].title.length !== 0 && <Advantages advantages={page.advantages} />}
