@@ -1,7 +1,7 @@
-import { Htag, Product, Tag } from '../../components';
+import { Htag, Tag } from '../../components';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import styles from './TopPageComponent.module.css';
-import { Vacancies, Advantages, Skills, SeoText, Sort } from './components';
+import { Vacancies, Advantages, Skills, SeoText, Sort, Product } from './components';
 import { TopLevelCategory } from '../../interfaces/toppage.interface';
 import { SortEnum, sortActionTypes } from './components/Sort/sort.actions';
 import { sortReducer } from './components/Sort/sort.reducer';

@@ -1,12 +1,15 @@
 .rating {
-	height: 20px;
 	display: flex;
+
+	height: 20px;
 	gap: 5px;
 }
 
 .rating button {
-	cursor: default;
 	height: 20px;
+
+	cursor: default;
+
 	background-color: transparent;
 }
 

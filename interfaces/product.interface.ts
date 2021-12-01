@@ -22,7 +22,7 @@ export interface ProductModel {
   credit: number;
   oldPrice: number;
   description: string;
-  characteristic: ProductCharacteristic[];
+  characteristics: ProductCharacteristic[];
   createdAt: Date;
   updatedAt: Date;
   __v: string;
@@ -31,6 +31,6 @@ export interface ProductModel {
   reviews: [];
   reviewCount: number;
   reviewAvg?: number;
-  advantages: string;
-  disadvantages: string;
+  advantages?: string;
+  disadvantages?: string;
 }

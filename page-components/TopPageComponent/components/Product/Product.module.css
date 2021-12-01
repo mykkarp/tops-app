@@ -1,0 +1,298 @@
+.product {
+	display: grid;
+	grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratingstart] auto [end];
+
+	margin: 0 0 30px 0;
+	padding: 30px;
+}
+
+.logo {
+	grid-column: start / logoend;
+	grid-row: 1 / span 2;
+
+	align-self: flex-start;
+}
+
+.title,
+.tags {
+	grid-column: titlestart / middle;
+}
+
+.price,
+.priceTitle {
+	grid-column: pricestart / priceend;
+
+	white-space: nowrap;
+}
+
+.credit,
+.creditTitle {
+	grid-column: creditstart / creditend;
+}
+
+.rating,
+.ratingTitle {
+	grid-column: ratingstart / end;
+}
+
+.description,
+.hr,
+.actions {
+	grid-column: start / end;
+}
+
+.characteristics {
+	grid-column: start / middle;
+}
+
+.merits {
+	grid-column: middle / end;
+}
+
+.logo img {
+	border-radius: 5px;
+}
+
+.title {
+	align-self: center;
+}
+
+.price,
+.credit {
+	align-self: center;
+
+	font-size: 20px;
+	line-height: 27px;
+}
+
+.rating {
+	align-self: center;
+}
+
+.priceTitle,
+.creditTitle,
+.ratingTitle {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 19px;
+}
+
+.credit span {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+.price div {
+	position: relative;
+	top: -4px;
+
+	margin: 0 0 0 8px;
+}
+
+.tags {
+	display: flex;
+	align-self: center;
+	flex-wrap: wrap;
+
+	padding: 7px 0 0 0;
+	gap: 5px;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.merits_title {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 22px;
+}
+
+.disadvantages,
+.advantages {
+	display: grid;
+	grid-template-columns: 3px 1fr;
+	gap: 2px 15px;
+}
+
+.advantages {
+	margin: 0 0 20px 0;
+}
+
+.merits_border {
+	grid-row: 1 / 3;
+
+	width: 100%;
+	height: 100%;
+
+	border-radius: 2px;
+}
+
+.advantages .merits_border {
+	background-color: var(--green);
+}
+
+.disadvantages .merits_border {
+	background-color: var(--tomato);
+}
+
+.description {
+	margin: 0 0 20px 0;
+}
+
+.descriptionResetMargin {
+	margin: 0;
+}
+
+.characteristics {
+	padding: 0 60px 0 0;
+}
+
+.characteristic {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	gap: 10px;
+
+	font-size: 16px;
+	line-height: 32px;
+}
+
+.characteristicName {
+	font-weight: bold;
+}
+
+.characteristicDots {
+	margin: 0 0 8px 0;
+
+	border-bottom: 1px dotted #C4C4C4;
+}
+
+@media screen and (max-width: 1320px) {
+	.product {
+		grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+		grid-template-areas:
+			"logo . title title title title title"
+			"logo . tags tags tags tags tags"
+			"price price price . credit . rating"
+			"priceTitle priceTitle priceTitle . creditTitle . ratingTitle"
+			"hr hr hr hr hr hr hr"
+			"description description description description description description description"
+			"characteristics characteristics characteristics characteristics characteristics characteristics characteristics"
+			"merits merits merits merits merits merits merits"
+			"hr2 hr2 hr2 hr2 hr2 hr2 hr2 "
+			"actions actions actions actions actions actions actions";
+	}
+
+	.logo {
+		grid-area: logo;
+	}
+
+	.title {
+		grid-area: title;
+	}
+
+	.tags {
+		grid-area: tags;
+	}
+
+	.price {
+		grid-area: price;
+	}
+
+	.credit {
+		grid-area: credit;
+	}
+
+	.rating {
+		grid-area: rating;
+	}
+
+	.price,
+	.credit,
+	.rating {
+		margin: 15px 0 0 0;
+	}
+
+	.priceTitle {
+		grid-area: priceTitle;
+	}
+
+	.creditTitle {
+		grid-area: creditTitle;
+	}
+
+	.ratingTitle {
+		grid-area: ratingTitle;
+	}
+
+	.hr {
+		grid-area: hr;
+	}
+
+	.hr2 {
+		grid-area: hr2;
+	}
+
+	.description {
+		grid-area: description;
+	}
+
+	.characteristics {
+		grid-area: characteristics;
+
+		margin: 0 0 20px 0;
+		padding: 0;
+	}
+
+	.merits {
+		grid-area: merits;
+	}
+
+	.actions {
+		grid-area: actions;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.product {
+		grid-template-columns: 70px 30px 1fr;
+		grid-template-areas:
+			"logo . title"
+			"logo . tags"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"ratingTitle ratingTitle rating"
+			"hr hr hr"
+			"description description description"
+			"characteristics characteristics characteristics"
+			"merits merits merits"
+			"hr2 hr2 hr2"
+			"actions actions actions";
+
+		align-items: flex-end;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.product {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"logo "
+			"title"
+			"tags"
+			"price"
+			"priceTitle"
+			"credit"
+			"creditTitle"
+			"rating"
+			"ratingTitle"
+			"hr"
+			"description"
+			"characteristics"
+			"merits"
+			"hr2"
+			"actions";
+	}
+}

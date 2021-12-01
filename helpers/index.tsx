@@ -15,3 +15,8 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 export const toLocalNum = (number: number): string => {
   return number.toLocaleString('en-US').replace(',', ' ');
 }
+
+export function declOfNum(number: number, titles: [string, string, string]): string {
+  const cases = [2, 0, 1, 1, 1, 2];
+  return titles[(number % 100 > 4 && number % 100 < 200) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+}
