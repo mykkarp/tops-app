@@ -8,7 +8,7 @@ export interface reviewModel {
   name: string;
   title: string;
   description: string;
-  rating: string;
+  rating: number;
   createdAt: Date;
 }
 
@@ -28,7 +28,7 @@ export interface ProductModel {
   __v: string;
   image: string;
   initialRating: number;
-  reviews: [];
+  reviews: reviewModel[];
   reviewCount: number;
   reviewAvg?: number;
   advantages?: string;

@@ -1,0 +1,33 @@
+.review {
+  display: grid;
+  grid-template-columns: [start] auto 1fr auto auto [end];
+
+  align-items: center;
+  gap: 10px;
+}
+
+.userName {
+  font-weight: bold;
+}
+
+.createdAt {
+  margin: 0px 10px 0px 0px;
+}
+
+.description {
+  grid-column: start / end;
+}
+
+@media screen and (max-width: 640px) {
+  .review {
+    grid-template-columns: [start] 30px [titlestart] auto [dateend] 1fr [end];
+  }
+
+  .title {
+    grid-column: titlestart / end;
+  }
+
+  .createdAt {
+    grid-column: start / dateend;
+  }
+}

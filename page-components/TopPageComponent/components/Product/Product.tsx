@@ -2,6 +2,7 @@ import IProductProps from './IProduct.props';
 import styles from "./Product.module.css";
 import cn from 'classnames';
 import { Button, Card, Divider, Htag, Ptag, Rating, Tag } from '../../../../components';
+import { Review } from '..';
 import { declOfNum, toLocalNum } from '../../../../helpers';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -12,9 +13,8 @@ export function Product({ product, className, ...props }: IProductProps): JSX.El
   const toggleReviews = () => {
     setIsReviewsOpen(!isReviewsOpen);
   }
-
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} {...props}>
       <Card className={styles.product}>
         <div className={styles.logo}>
           <Image
@@ -74,19 +74,21 @@ export function Product({ product, className, ...props }: IProductProps): JSX.El
         <Divider className={cn(styles.hr, styles.hr2)} />
         <div className={styles.actions}>
           <Button appearance='primary'>Узнать подробнее</Button>
-          <Button
-            appearance='ghost'
-            arrow={isReviewsOpen ? 'down' : 'right'}
-            onClick={toggleReviews}
-          >
-            Читать отзывы
-          </Button>
+          {product.reviewCount > 0 && (
+            <Button
+              appearance='ghost'
+              arrow={isReviewsOpen ? 'down' : 'right'}
+              onClick={toggleReviews}
+            >
+              Читать отзывы
+            </Button>
+          )}
         </div>
       </Card>
       <Card color='blue' className={cn(styles.reviews, {
         [styles['reviews-open']]: isReviewsOpen,
       })}>
-        <div>text</div>
+        {product.reviews.map((review) => <Review key={review._id} review={review} />)}
       </Card>
     </div>
   );

@@ -176,6 +176,8 @@
 	height: 0;
 	overflow: hidden;
 	padding: 0;
+	display: grid;
+	gap: 30px;
 }
 
 .reviews-open {
