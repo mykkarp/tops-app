@@ -25,7 +25,7 @@ export function ReviewForm({ productId, className, ...props }: IReviewFormProps)
             control={control}
             name='rating'
             render={({ field }) => (
-              <Rating isEditable={true} setRating={field.onChange} rating={field.value} />
+              <Rating isEditable={true} ref={field.ref} setRating={field.onChange} rating={field.value} />
             )}
           />
         </div>
