@@ -2,7 +2,7 @@ import IProductProps from './IProduct.props';
 import styles from "./Product.module.css";
 import cn from 'classnames';
 import { Button, Card, Divider, Htag, Ptag, Rating, Tag } from '../../../../components';
-import { Review } from '..';
+import { Review, ReviewForm } from '..';
 import { declOfNum, toLocalNum } from '../../../../helpers';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -88,7 +88,12 @@ export function Product({ product, className, ...props }: IProductProps): JSX.El
       <Card color='blue' className={cn(styles.reviews, {
         [styles['reviews-open']]: isReviewsOpen,
       })}>
-        {product.reviews.map((review) => <Review key={review._id} review={review} />)}
+        {product.reviews.map((review) => (
+          <div key={review._id}>
+            <Review review={review} />
+            <Divider />
+          </div>))}
+        <ReviewForm productId={product._id} />
       </Card>
     </div>
   );

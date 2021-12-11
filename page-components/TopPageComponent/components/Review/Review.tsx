@@ -19,9 +19,7 @@ export function Review({ review, className, ...props }: IReviewProps): JSX.Eleme
         <span className={styles.userName}>{name}:&nbsp;&nbsp;</span>
         <span>{title}</span>
       </div>
-      <div className={styles.createdAt}>
-        {format(new Date(createdAt), 'dd MMMM yyyy', { locale: ru })}
-      </div>
+      <span className={styles.createdAt}>{format(new Date(createdAt), 'dd MMMM yyyy', { locale: ru })}</span>
       <div><Rating rating={rating} /></div>
       <Ptag size='s' className={styles.description}>{description}</Ptag>
     </article>

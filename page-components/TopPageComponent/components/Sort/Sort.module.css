@@ -1,12 +1,12 @@
 .sort {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: end;
+	justify-content: flex-end;
 	gap: 20px 40px;
 }
 
 .sort button {
-	text-align: right;
+	text-align: end;
 
 	background-color: transparent;
 
