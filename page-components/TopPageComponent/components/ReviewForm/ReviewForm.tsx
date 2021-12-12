@@ -7,7 +7,7 @@ import CloseIcon from './cross.svg';
 import { useForm, Controller } from 'react-hook-form';
 
 export function ReviewForm({ productId, className, ...props }: IReviewFormProps): JSX.Element {
-  const { register, control, handleSubmit } = useForm<IForm>();
+  const { register, control, handleSubmit, formState: { errors } } = useForm<IForm>();
 
   const onSubmitHandler = (data: IForm) => {
     console.log(data);
@@ -17,19 +17,41 @@ export function ReviewForm({ productId, className, ...props }: IReviewFormProps)
   return (
     <>
       <form onSubmit={handleSubmit(onSubmitHandler)} className={cn(className, styles.form)} {...props}>
-        <Input {...register('name')} type='text' placeholder='Имя' />
-        <Input {...register('title')} type='text' placeholder='Заголовок отзыва' />
+        <Input
+          {...register('name', { required: { value: true, message: 'Заполните имя' } })}
+          type='text'
+          placeholder='Имя'
+          error={errors.name}
+        />
+        <Input
+          {...register('title', { required: { value: true, message: 'Заполните заголовок' } })}
+          type='text'
+          placeholder='Заголовок отзыва'
+          error={errors.title}
+        />
         <div className={styles.rating}>
           <span>Оценка:</span>
           <Controller
             control={control}
             name='rating'
+            rules={{ required: { value: true, message: 'Укажите оценку' } }}
             render={({ field }) => (
-              <Rating isEditable={true} ref={field.ref} setRating={field.onChange} rating={field.value} />
+              <Rating
+                isEditable={true}
+                ref={field.ref}
+                setRating={field.onChange}
+                rating={field.value}
+                error={errors.rating}
+              />
             )}
           />
         </div>
-        <Textarea {...register('description')} placeholder='Текст отзыва' />
+        <Textarea
+          className={styles.textarea}
+          {...register('description', { required: { value: true, message: 'Заполните отзыв' } })}
+          placeholder='Текст отзыва'
+          error={errors.description}
+        />
         <div className={styles.submit}>
           <Button type='submit' appearance='primary' className={styles.send}>Отправить</Button>
           <Ptag size='s'>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</Ptag>

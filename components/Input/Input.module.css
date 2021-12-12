@@ -1,8 +1,12 @@
+.inputWrapper {
+	position: relative;
+}
+
 .input {
 	padding: 7px 15px;
 
 	color: var(--black);
-	border: none;
+	border: 1px solid rgba(0, 0, 0, 0);
 	border-radius: 5px;
 	outline-color: var(--primary);
 	background-color: var(--white);
@@ -12,8 +16,29 @@
 
 	font-size: 16px;
 	line-height: 22px;
+
+	transition: border 0.2s ease;
 }
 
 .input::placeholder {
 	color: #A4A4A4;
+}
+
+.input:focus {
+	border: 1px solid var(--primary);
+}
+
+.error {
+	border: 1px solid var(--tomato);
+}
+
+.error:focus {
+	border: 1px solid var(--tomato-dark);
+}
+
+.errorMessage {
+	position: absolute;
+	left: 0;
+	bottom: -18px;
+	color: var(--tomato);
 }

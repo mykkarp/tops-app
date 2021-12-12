@@ -9,7 +9,7 @@
   justify-self: start;
 }
 
-.form textarea {
+.form .textarea {
   grid-column: start / end;
 }
 
