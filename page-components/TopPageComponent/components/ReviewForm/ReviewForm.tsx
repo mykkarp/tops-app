@@ -2,29 +2,44 @@ import IReviewFormProps from './IReviewForm.props';
 import styles from "./ReviewForm.module.css";
 import cn from 'classnames';
 import { Button, Input, Ptag, Rating, Textarea } from '../../../../components';
-import { useState } from 'react';
 import CloseIcon from './cross.svg';
 import { useForm, Controller } from 'react-hook-form';
+import axios, { AxiosError } from 'axios';
+import { API } from '../../../../helpers/api';
+import { useState } from 'react';
 
 export function ReviewForm({ productId, className, ...props }: IReviewFormProps): JSX.Element {
-  const { register, control, handleSubmit, formState: { errors } } = useForm<IForm>();
+  const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IForm>();
+  const [isSuccessSent, setIsSuccessSent] = useState<boolean>(false);
+  const [failedSentMessage, setFailedSentMessage] = useState<string>('');
 
-  const onSubmitHandler = (data: IForm) => {
-    console.log(data);
-
+  const onSubmitHandler = async (formData: IForm) => {
+    try {
+      const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
+      if (data.message) {
+        setIsSuccessSent(true);
+        reset();
+      } else {
+        setFailedSentMessage('Что-то пошло не так.');
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setFailedSentMessage(error.message);
+      }
+    }
   }
 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmitHandler)} className={cn(className, styles.form)} {...props}>
         <Input
-          {...register('name', { required: { value: true, message: 'Заполните имя' } })}
+          {...register('name', { validate: (value) => { return !!value.trim() || 'Заполните имя' } })}
           type='text'
           placeholder='Имя'
           error={errors.name}
         />
         <Input
-          {...register('title', { required: { value: true, message: 'Заполните заголовок' } })}
+          {...register('title', { validate: (value) => { return !!value.trim() || 'Заполните заголовок' } })}
           type='text'
           placeholder='Заголовок отзыва'
           error={errors.title}
@@ -48,7 +63,10 @@ export function ReviewForm({ productId, className, ...props }: IReviewFormProps)
         </div>
         <Textarea
           className={styles.textarea}
-          {...register('description', { required: { value: true, message: 'Заполните отзыв' } })}
+          {...register(
+            'description',
+            { validate: (value) => { return !!value.trim() || 'Заполните отзыв' } }
+          )}
           placeholder='Текст отзыва'
           error={errors.description}
         />
@@ -57,17 +75,41 @@ export function ReviewForm({ productId, className, ...props }: IReviewFormProps)
           <Ptag size='s'>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</Ptag>
         </div>
       </form>
-      <div className={styles.success}>
-        <div className={styles.successTitle}>Ваш отзыв отправлен!</div>
-        <div className={styles.description}>
-          Спасибо, ваш отзыв будет опубликован после проверки.
+      {isSuccessSent && (
+        <div className={cn(styles.success, styles.panel)}>
+          <div className={styles.successTitle}>Ваш отзыв отправлен!</div>
+          <div className={styles.description}>
+            Спасибо, ваш отзыв будет опубликован после проверки.
+          </div>
+          <button
+            onClick={() => setIsSuccessSent(false)}
+            type='button'
+            className={styles.buttonClose}
+          >
+            <CloseIcon />
+          </button>
         </div>
-        <button type='button' className={styles.successClose}>
-          <CloseIcon />
-        </button>
-      </div>
+      )}
+      {failedSentMessage && (
+        <div className={cn(styles.error, styles.panel)}>
+          <div className={styles.description}>
+            {failedSentMessage}
+          </div>
+          <button
+            onClick={() => setFailedSentMessage('')}
+            type='button'
+            className={cn(styles.errorClose, styles.buttonClose)}
+          >
+            <CloseIcon />
+          </button>
+        </div>
+      )}
     </>
   );
+}
+
+interface IReviewSentResponse {
+  message: string;
 }
 
 interface IForm {

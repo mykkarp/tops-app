@@ -27,13 +27,14 @@ button.editable {
 }
 
 .error .editable svg {
-	filter: drop-shadow(1px 1px var(--tomato)) drop-shadow(-1px -1px var(--tomato)) drop-shadow(1px -1px var(--tomato)) drop-shadow(-1px 1px var(--tomato));
+	stroke: var(--tomato);
+	transition: stroke 0.2s ease;
 }
 
 .editable:focus svg,
 .editable:hover svg {
 	fill: var(--primary-hover);
-	filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+	stroke: rgba(0, 0, 0, 0);
 }
 
 .errorMessage {
