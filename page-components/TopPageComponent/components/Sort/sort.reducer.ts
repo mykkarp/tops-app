@@ -22,6 +22,11 @@ export const sortReducer = (state: sortReducerState, action: sortActionTypes): s
           return productB.price - productA.price;
         })
       }
+    case 'UPDATE':
+      return {
+        sort: SortEnum.Rating,
+        products: action.payload.updatedState
+      }
     default:
       return state;
   }

@@ -5,16 +5,25 @@ import { Button, Card, Divider, Htag, Ptag, Rating, Tag } from '../../../../comp
 import { Review, ReviewForm } from '..';
 import { declOfNum, toLocalNum } from '../../../../helpers';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export function Product({ product, className, ...props }: IProductProps): JSX.Element {
   const [isReviewsOpen, setIsReviewsOpen] = useState<boolean>(false);
+  const reviewRef = useRef<HTMLDivElement>(null);
+
+  const scrollToReview = () => {
+    setIsReviewsOpen(true);
+    reviewRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
 
   const toggleReviews = () => {
     setIsReviewsOpen(!isReviewsOpen);
   }
   return (
-    <div className={styles.wrapper} {...props}>
+    <div className={cn(styles.wrapper, className)} {...props}>
       <Card className={styles.product}>
         <div className={styles.logo}>
           <Image
@@ -36,7 +45,7 @@ export function Product({ product, className, ...props }: IProductProps): JSX.El
         </div>
         <span className={styles.priceTitle}>цена</span>
         <span className={styles.creditTitle}>в кредит</span>
-        <span className={styles.ratingTitle}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</span>
+        <span className={styles.ratingTitle}><a href='#ref' onClick={scrollToReview}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</a></span>
         <Divider className={styles.hr} />
         <Ptag
           className={cn(styles.description, {
@@ -74,20 +83,22 @@ export function Product({ product, className, ...props }: IProductProps): JSX.El
         <Divider className={cn(styles.hr, styles.hr2)} />
         <div className={styles.actions}>
           <Button appearance='primary'>Узнать подробнее</Button>
-          {product.reviewCount > 0 && (
-            <Button
-              appearance='ghost'
-              arrow={isReviewsOpen ? 'down' : 'right'}
-              onClick={toggleReviews}
-            >
-              Читать отзывы
-            </Button>
-          )}
+          <Button
+            appearance='ghost'
+            arrow={isReviewsOpen ? 'down' : 'right'}
+            onClick={toggleReviews}
+          >
+            Читать отзывы
+          </Button>
         </div>
       </Card>
-      <Card color='blue' className={cn(styles.reviews, {
-        [styles['reviews-open']]: isReviewsOpen,
-      })}>
+      <Card
+        color='blue'
+        className={cn(styles.reviews, {
+          [styles['reviews-open']]: isReviewsOpen,
+        })}
+        ref={reviewRef}
+      >
         {product.reviews.map((review) => (
           <div key={review._id}>
             <Review review={review} />
