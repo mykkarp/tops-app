@@ -1,4 +1,4 @@
-import React, { createContext, PropsWithChildren, useContext, useState } from 'react';
+import React, { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { MenuItem } from '../interfaces/menu.interface';
 import { TopLevelCategory } from '../interfaces/toppage.interface';
 
@@ -20,6 +20,10 @@ export function AppProvider({ children, menu, firstCategory }: PropsWithChildren
   const setMenu = (menu: MenuItem[]) => {
     setMenuState(menu);
   }
+
+  useEffect(() => {
+    setMenu(menu);
+  }, [firstCategory]);
 
   return React.createElement(AppContext.Provider, { value: { menu: menuState, firstCategory, setMenu } }, children); // here i had some bugs with JSX, so i decided to work with React.createElement
 }

@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useAppContext } from '../../../../contexts/app.context';
 import { firstLevelMenu } from '../../../../helpers';
 import { PageItem } from '../../../../interfaces/menu.interface';
+import { useEffect } from 'react';
 
 export function Menu(): JSX.Element {
   const { menu, setMenu, firstCategory } = useAppContext();
@@ -23,18 +24,30 @@ export function Menu(): JSX.Element {
   const buildFirstLevel = () => {
     return (
       <ul className={cn(styles.firstLevelList)}>
-        {firstLevelMenu.map((menu) => {
+        {firstLevelMenu.map((firstLevelMenu) => {
+          console.log(firstLevelMenu.route);
           return (
-            <li key={menu.route} className={cn(styles.firstLevelLI, {
-              [styles.firstLevelActive]: menu.id === firstCategory,
+            <li key={firstLevelMenu.route} className={cn(styles.firstLevelLI, {
+              [styles.firstLevelActive]: firstLevelMenu.id === firstCategory,
             })}>
-              <Link href={`/${menu.route}`}>
+              <Link href={`/${firstLevelMenu.route}`}>
                 <a>
-                  {menu.icon}
-                  {menu.name}
+                  {firstLevelMenu.icon}
+                  {firstLevelMenu.name}
                 </a>
               </Link>
-              {menu.id === firstCategory && buildSecondLevel(menu.route)}
+              {firstLevelMenu.id === firstCategory && (
+                menu.length > 0 ?
+                  buildSecondLevel(firstLevelMenu.route) :
+                  <div className={styles.secondLevelBlock}>
+                    <hr />
+                    <ul className={styles.secondLevelList}>
+                      <li>
+                        Пока ничего не добавлено
+                      </li>
+                    </ul>
+                  </div>
+              )}
             </li>
           )
         })}
@@ -45,14 +58,7 @@ export function Menu(): JSX.Element {
   const buildSecondLevel = (route: string) => {
     return (
       <div className={styles.secondLevelBlock}>
-        <div>
-          <svg
-            width="100%"
-            height="100%"
-          >
-            <line x1="12" y1="0" x2="12" y2="100%" stroke="#DFDFDF" />
-          </svg>
-        </div>
+        <hr />
         <ul className={styles.secondLevelList}>
           {menu.map((menuItem) => {
             const isMenuItemRouted = menuItem.pages.map((page) => page.alias).includes(router.asPath.split('/')[2]);
