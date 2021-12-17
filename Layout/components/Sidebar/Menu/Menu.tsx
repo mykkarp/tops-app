@@ -6,11 +6,45 @@ import { useRouter } from 'next/router';
 import { useAppContext } from '../../../../contexts/app.context';
 import { firstLevelMenu } from '../../../../helpers';
 import { PageItem } from '../../../../interfaces/menu.interface';
-import { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Menu(): JSX.Element {
   const { menu, setMenu, firstCategory } = useAppContext();
   const router = useRouter();
+
+  const thirdLevelVariants = {
+    hidden: {
+      margin: 0,
+    },
+    visible: {
+      margin: '10px 0 0 20px',
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.06,
+      }
+    },
+    exit: {
+      margin: 0,
+      height: 0,
+      transition: {
+        when: 'afterChildren',
+        staggerDirection: -1,
+        staggerChildren: 0.06
+      }
+    }
+  }
+
+  const thirdLevelChildrenVariants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1
+    },
+    exit: {
+      opacity: 0
+    }
+  }
 
   const toggleSecondLevel = (secondCategory: string) => {
     setMenu && setMenu(menu.map((menuItem) => {
@@ -77,7 +111,13 @@ export function Menu(): JSX.Element {
                     <ArrowIcon />
                   </span>
                 </button>
-                {menuItem.isOpen && buildThirdLevel(menuItem.pages, route)}
+                <AnimatePresence
+                  initial={false}
+                  exitBeforeEnter={true}
+                  onExitComplete={() => console.log('ты лох')}
+                >
+                  {menuItem.isOpen && buildThirdLevel(menuItem.pages, route)}
+                </AnimatePresence>
               </li>
             )
           })
@@ -89,17 +129,24 @@ export function Menu(): JSX.Element {
 
   const buildThirdLevel = (pages: PageItem[], route: string) => {
     return (
-      <ul className={cn(styles.thirdLevelList)}>
+      <motion.ul
+        layout
+        initial='hidden'
+        animate='visible'
+        exit='exit'
+        variants={thirdLevelVariants}
+        className={cn(styles.thirdLevelList)}
+      >
         {pages.map((page) => {
           return (
-            <li key={page.alias} className={cn(styles.thirdLevelLI, {
+            <motion.li variants={thirdLevelChildrenVariants} key={page.alias} className={cn(styles.thirdLevelLI, {
               [styles.thirdLevelCurrentCategory]: `/${route}/${page.alias}` === router.asPath
             })}>
               <Link href={`/${route}/${page.alias}`}><a>{page.category}</a></Link>
-            </li>
+            </motion.li>
           )
         })}
-      </ul>
+      </motion.ul>
     )
   }
 
