@@ -59,7 +59,6 @@ export function Menu(): JSX.Element {
     return (
       <ul className={cn(styles.firstLevelList)}>
         {firstLevelMenu.map((firstLevelMenu) => {
-          console.log(firstLevelMenu.route);
           return (
             <li key={firstLevelMenu.route} className={cn(styles.firstLevelLI, {
               [styles.firstLevelActive]: firstLevelMenu.id === firstCategory,

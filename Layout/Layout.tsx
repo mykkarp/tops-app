@@ -3,6 +3,7 @@ import styles from "./Layout.module.css";
 import { Footer, Topbar, Sidebar } from './components';
 import { FunctionComponent } from 'react';
 import { AppProvider, IAppContext } from '../contexts/app.context';
+import { ScrollToUp } from '../components';
 
 function Layout({ children }: ILayoutProps): JSX.Element {
   return (
@@ -13,6 +14,7 @@ function Layout({ children }: ILayoutProps): JSX.Element {
         {children}
       </main>
       <Footer className={styles.footer} />
+      <ScrollToUp />
     </div>
   );
 }
