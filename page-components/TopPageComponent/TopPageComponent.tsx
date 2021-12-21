@@ -26,7 +26,7 @@ export function TopPageComponent({ page, products, firstCategory }: TopPageCompo
         <Sort sort={sort} setSort={setSort} />
       </header>
       <section>
-        {sortedProducts && sortedProducts.map((product) => <Product key={product._id} product={product} />)}
+        {sortedProducts && sortedProducts.map((product) => <Product layout key={product._id} product={product} />)}
       </section>
       {firstCategory === TopLevelCategory.Courses && page.hh && <Vacancies {...page.hh} category={page.category} />}
       {page.advantages && page.advantages.length > 0 && page.advantages[0].title.length !== 0 && <Advantages advantages={page.advantages} />}
