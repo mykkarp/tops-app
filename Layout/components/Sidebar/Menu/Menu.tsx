@@ -14,13 +14,15 @@ export function Menu(): JSX.Element {
 
   const thirdLevelVariants = {
     hidden: {
-      margin: 0,
+      margin: '0px 0 0 0px',
+      height: 0
     },
     visible: {
       margin: '10px 0 0 20px',
+      height: 'auto',
       transition: {
         when: 'beforeChildren',
-        staggerChildren: 0.06,
+        staggerChildren: 0.04,
       }
     },
     exit: {
@@ -29,7 +31,7 @@ export function Menu(): JSX.Element {
       transition: {
         when: 'afterChildren',
         staggerDirection: -1,
-        staggerChildren: 0.06
+        staggerChildren: 0.04
       }
     }
   }
@@ -113,7 +115,6 @@ export function Menu(): JSX.Element {
                 <AnimatePresence
                   initial={false}
                   exitBeforeEnter={true}
-                  onExitComplete={() => console.log('ты лох')}
                 >
                   {menuItem.isOpen && buildThirdLevel(menuItem.pages, route)}
                 </AnimatePresence>

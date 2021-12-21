@@ -3,13 +3,14 @@
 }
 
 .textarea {
-	min-height: 76px;
 	width: 100%;
+	min-height: 76px;
 
 	max-height: 500px;
 	padding: 7px 15px;
 
 	resize: vertical;
+	transition: border 0.2s ease;
 
 	color: var(--black);
 	border: 1px solid rgba(0, 0, 0, 0);
@@ -22,13 +23,11 @@
 
 	font-size: 16px;
 	line-height: 22px;
-	transition: border 0.2s ease;
 }
 
 .textarea::placeholder {
 	color: #A4A4A4;
 }
-
 
 .textarea:focus {
 	border: 1px solid var(--primary);
@@ -44,7 +43,8 @@
 
 .errorMessage {
 	position: absolute;
-	left: 0;
 	bottom: -15px;
+	left: 0;
+
 	color: var(--tomato);
 }

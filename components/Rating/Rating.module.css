@@ -1,5 +1,6 @@
 .rating {
 	position: relative;
+
 	display: flex;
 
 	height: 20px;
@@ -28,6 +29,7 @@ button.editable {
 
 .error .editable svg {
 	stroke: var(--tomato);
+
 	transition: stroke 0.2s ease;
 }
 
@@ -39,7 +41,8 @@ button.editable {
 
 .errorMessage {
 	position: absolute;
-	left: 0;
 	bottom: -20px;
+	left: 0;
+
 	color: var(--tomato);
 }
