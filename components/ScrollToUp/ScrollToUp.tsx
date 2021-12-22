@@ -1,8 +1,8 @@
 import styles from "./ScrollToUp.module.css";
-import UpIcon from './up.svg';
 import { useScrollY } from '../../hooks/useScrollY';
 import { useAnimation, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { ButtonIcon } from '..';
 
 function useHeightCrossing(height: number): 'crossingInTop' | 'crossingInBottom' {
   const yPosition = useScrollY();
@@ -37,14 +37,13 @@ export function ScrollToUp(): JSX.Element {
   }, [heightCrossing, controls])
 
   return (
-    <motion.button
+    <motion.div
       className={styles.up}
-      onClick={scrollToTop}
       initial={{ bottom: '-50px' }}
       transition={{ type: "spring", stiffness: 150 }}
       animate={controls}
     >
-      <UpIcon />
-    </motion.button>
+      <ButtonIcon onClick={scrollToTop} appearance='primary' icon='up' />
+    </motion.div>
   );
 }
