@@ -9,7 +9,7 @@ export function ButtonIcon({ appearance, icon, className, ...props }: IButtonIco
     <button
       className={cn(styles.button, className, {
         [styles.primary]: appearance === 'primary',
-        [styles.ghost]: appearance === 'white',
+        [styles.white]: appearance === 'white',
       })}
       {...props}
     >

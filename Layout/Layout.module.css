@@ -30,6 +30,7 @@
 	.wrapper {
 		grid-template-columns: auto minmax(320px, 720px) auto;
 		grid-template-areas: ". topbar ."". body .""footer footer footer";
+		gap: 15px 30px;
 	}
 
 	.sidebar {
@@ -37,6 +38,6 @@
 	}
 
 	.topbar {
-		display: block;
+		display: flex;
 	}
 }
