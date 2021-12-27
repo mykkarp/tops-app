@@ -6,8 +6,7 @@ export const enum SortEnum {
 }
 
 export type sortActionTypes =
-  { type: SortEnum.Price } |
-  { type: SortEnum.Rating } |
+  { type: SortEnum } |
   { type: string, payload: { updatedState: ProductModel[] } };
 
 export const ratingSortAction = () => (

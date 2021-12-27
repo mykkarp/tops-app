@@ -14,6 +14,13 @@
 	line-height: 1.57rem;
 }
 
+.sort button:focus,
+.sort button:hover {
+	color: var(--primary-hover);
+	text-decoration: underline;
+}
+
+
 .sort svg {
 	display: none;
 }

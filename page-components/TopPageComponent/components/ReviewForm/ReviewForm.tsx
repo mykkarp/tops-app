@@ -4,11 +4,11 @@ import cn from 'classnames';
 import { Button, Input, Ptag, Rating, Textarea } from '../../../../components';
 import CloseIcon from './cross.svg';
 import { useForm, Controller } from 'react-hook-form';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { API } from '../../../../helpers/api';
-import { useState } from 'react';
+import { ForwardedRef, forwardRef, useState } from 'react';
 
-export function ReviewForm({ productId, className, ...props }: IReviewFormProps): JSX.Element {
+export const ReviewForm = forwardRef(({ productId, className, ...props }: IReviewFormProps, ref: ForwardedRef<HTMLFormElement>): JSX.Element => {
   const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IForm>();
   const [isSuccessSent, setIsSuccessSent] = useState<boolean>(false);
   const [failedSentMessage, setFailedSentMessage] = useState<string>('');
@@ -31,7 +31,7 @@ export function ReviewForm({ productId, className, ...props }: IReviewFormProps)
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmitHandler)} className={cn(className, styles.form)} {...props}>
+      <form ref={ref} onSubmit={handleSubmit(onSubmitHandler)} className={cn(className, styles.form)} {...props}>
         <Input
           {...register('name', { validate: (value) => { return !!value.trim() || 'Заполните имя' } })}
           type='text'
@@ -106,7 +106,7 @@ export function ReviewForm({ productId, className, ...props }: IReviewFormProps)
       )}
     </>
   );
-}
+});
 
 interface IReviewSentResponse {
   message: string;

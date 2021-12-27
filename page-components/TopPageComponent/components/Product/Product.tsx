@@ -5,24 +5,35 @@ import { Button, Card, Divider, Htag, Ptag, Rating, Tag } from '../../../../comp
 import { Review, ReviewForm } from '..';
 import { declOfNum, toLocalNum } from '../../../../helpers';
 import Image from 'next/image';
-import { useState, useRef, forwardRef, ForwardedRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef, forwardRef, ForwardedRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const Product = motion(forwardRef(({ product, className, ...props }: IProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
   const [isReviewsOpen, setIsReviewsOpen] = useState<boolean>(false);
-  const reviewRef = useRef<HTMLDivElement>(null);
+  const reviewFormRef = useRef<HTMLFormElement>(null);
+  const scrollToForm = useRef(false);
 
   const reviewVariants = {
     visible: { opacity: 1, height: 'auto' },
     hidden: { opacity: 0, height: 0 }
   }
 
-  const scrollToReview = () => {
-    setIsReviewsOpen(true);
-    reviewRef.current?.scrollIntoView({
+  const scrollToFormAndFocus = () => {
+    reviewFormRef.current?.scrollIntoView({
       behavior: 'smooth',
-      block: 'start'
+      block: 'center'
     });
+    const firstFromInput = reviewFormRef.current?.elements[0] as HTMLElement;
+    firstFromInput.focus({ preventScroll: true });
+  }
+
+  const scrollToFormHandler = () => {
+    if (isReviewsOpen) {
+      scrollToFormAndFocus();
+    } else {
+      scrollToForm.current = true;
+      setIsReviewsOpen(true);
+    }
   }
 
   const toggleReviews = () => {
@@ -52,7 +63,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: IPro
         </div>
         <span className={styles.priceTitle}>цена</span>
         <span className={styles.creditTitle}>в кредит</span>
-        <span className={styles.ratingTitle}><a href='#ref' onClick={scrollToReview}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</a></span>
+        <span className={styles.ratingTitle}><button onClick={scrollToFormHandler}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</button></span>
         <Divider className={styles.hr} />
         <Ptag
           className={cn(styles.description, {
@@ -103,20 +114,32 @@ export const Product = motion(forwardRef(({ product, className, ...props }: IPro
         variants={reviewVariants}
         initial={'hidden'}
         animate={isReviewsOpen ? 'visible' : 'hidden'}
+        onAnimationComplete={() => {
+          if (scrollToForm.current) {
+            scrollToFormAndFocus();
+            scrollToForm.current = false;
+          }
+        }}
       >
-        <Card
-          color='blue'
-          className={styles.reviews}
-          ref={reviewRef}
+        <AnimatePresence
+          initial={false}
+          exitBeforeEnter={true}
         >
-          {product.reviews.map((review) => (
-            <div key={review._id}>
-              <Review review={review} />
-              <Divider />
-            </div>
-          ))}
-          <ReviewForm productId={product._id} />
-        </Card>
+          {isReviewsOpen && (
+            <Card
+              color='blue'
+              className={styles.reviews}
+            >
+              {product.reviews.map((review) => (
+                <div key={review._id}>
+                  <Review review={review} />
+                  <Divider />
+                </div>
+              ))}
+              <ReviewForm ref={reviewFormRef} productId={product._id} />
+            </Card>
+          )}
+        </AnimatePresence>
       </motion.div>
     </div>
   );

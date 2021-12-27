@@ -138,7 +138,7 @@
 }
 
 .advantages .merits_border {
-	background-color: var(--green);
+	background-color: #1DC37E;
 }
 
 .disadvantages .merits_border {
@@ -182,8 +182,15 @@
 	padding: 30px;
 }
 
-.ratingTitle a {
+.ratingTitle button {
 	color: var(--primary);
+	background-color: transparent;
+}
+
+.ratingTitle button:hover,
+.ratingTitle button:focus {
+	color: var(--primary-hover);
+	text-decoration: underline;
 }
 
 @media screen and (max-width: 1320px) {

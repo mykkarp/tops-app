@@ -26,6 +26,44 @@
 	grid-area: footer;
 }
 
+.skipButton {
+	position: fixed;
+	top: 0px;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	background-color: var(--primary-hover);
+	padding: 10px;
+	border-radius: 5px;
+	color: var(--white);
+	z-index: 15;
+	line-height: 50%;
+	text-align: center;
+	font-size: 1rem;
+	transition: 0.2s transform ease;
+}
+
+.skipButton:focus {
+	transform: translate(-50%, 10%);
+}
+
+.skipDiv {
+	width: 100%;
+	text-align: center;
+}
+
+.afterSkip {
+	width: 0;
+	overflow: hidden;
+	height: 2px;
+	align-self: center;
+	background-color: var(--primary);
+	transition: 0.5s width ease;
+}
+
+.afterSkip:focus {
+	width: 100%;
+}
+
 @media screen and (max-width: 720px) {
 	.wrapper {
 		grid-template-columns: auto minmax(320px, 720px) auto;
