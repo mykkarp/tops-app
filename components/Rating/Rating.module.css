@@ -9,11 +9,6 @@
 	transition: box-shadow 0.2s ease;
 }
 
-.rating:focus {
-	outline: var(--primary);
-	box-shadow: 0 0 0 1px var(--primary);
-}
-
 .rating input {
 	position: absolute;
 	width: 1px;

@@ -20,6 +20,7 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
           <input
             type='radio'
             onClick={() => onClickHandler(index + 1)}
+            tabIndex={isEditable ? 0 : -1}
           />
           <StarIcon
             className={cn(styles.star, {
@@ -43,7 +44,6 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
       className={cn(styles.rating, className, {
         [styles.error]: error
       })}
-      tabIndex={isEditable ? 0 : -1}
       {...props}
     >
       {ratingArray.map((ratingItem: JSX.Element, index: number) => <span key={index}>{ratingItem}</span>)}
