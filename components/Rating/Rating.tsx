@@ -16,11 +16,12 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
   const constructRating = (currentRating: number) => {
     const updatedArray = ratingArray.map((_, index: number) => {
       return (
-        <label>
+        <>
           <input
             type='radio'
             onClick={() => onClickHandler(index + 1)}
-            tabIndex={isEditable ? 0 : -1}
+            disabled={!isEditable}
+            name='rating'
           />
           <StarIcon
             className={cn(styles.star, {
@@ -28,7 +29,7 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
               [styles.editable]: isEditable,
             })}
           />
-        </label>
+        </>
       )
     });
     setRatingArray(updatedArray);
@@ -46,7 +47,7 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
       })}
       {...props}
     >
-      {ratingArray.map((ratingItem: JSX.Element, index: number) => <span key={index}>{ratingItem}</span>)}
+      {ratingArray.map((ratingItem: JSX.Element, index: number) => <label key={index}>{ratingItem}</label>)}
       {error && <span className={styles.errorMessage}>{error.message}</span>}
     </fieldset>
   );
