@@ -61,9 +61,9 @@ export const Product = motion(forwardRef(({ product, className, ...props }: IPro
         <div className={styles.tags}>
           {product.categories.map(category => <Tag key={category} size='s' color='ghost'>{category}</Tag>)}
         </div>
-        <span className={styles.priceTitle}>цена</span>
-        <span className={styles.creditTitle}>в кредит</span>
-        <span className={styles.ratingTitle}><button onClick={scrollToFormHandler}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</button></span>
+        <legend className={styles.priceTitle}>цена</legend>
+        <legend className={styles.creditTitle}>в кредит</legend>
+        <legend className={styles.ratingTitle}><button onClick={scrollToFormHandler}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</button></legend>
         <Divider className={styles.hr} />
         <Ptag
           className={cn(styles.description, {

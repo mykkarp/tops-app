@@ -20,6 +20,7 @@
 
 .body {
 	grid-area: body;
+	position: relative;
 }
 
 .footer {
@@ -58,6 +59,10 @@
 	align-self: center;
 	background-color: var(--primary);
 	transition: 0.5s width ease;
+
+	position: absolute;
+	top: 0px;
+	left: 0;
 }
 
 .afterSkip:focus {

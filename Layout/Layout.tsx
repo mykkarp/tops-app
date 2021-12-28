@@ -37,9 +37,7 @@ function Layout({ children }: ILayoutProps): JSX.Element {
           ref={afterSkip}
           onBlur={onBlurAfterSkipHandler}
           className={styles.afterSkip}
-        >
-          f
-        </button>
+        />
         {children}
       </main>
       <Footer className={styles.footer} />

@@ -5,36 +5,46 @@
 
 	height: 20px;
 	gap: 5px;
+
+	transition: box-shadow 0.2s ease;
 }
 
-.rating button {
+.rating:focus {
+	outline: var(--primary);
+	box-shadow: 0 0 0 1px var(--primary);
+}
+
+.rating input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+}
+
+.star {
 	height: 20px;
 
 	cursor: default;
-
-	background-color: transparent;
-}
-
-.star svg {
 	transition: fill 0.2s ease;
 }
 
-.filled svg {
+.star.filled {
 	fill: var(--primary);
 }
 
-button.editable {
+.star.editable {
 	cursor: pointer;
 }
 
-.error .editable svg {
+.rating.error svg {
 	stroke: var(--tomato);
 
 	transition: stroke 0.2s ease;
 }
 
-.editable:focus svg,
-.editable:hover svg {
+.rating input:focus+.star.editable,
+.star.editable:hover {
 	fill: var(--primary-hover);
 	stroke: rgba(0, 0, 0, 0);
 }
