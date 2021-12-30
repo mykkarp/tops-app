@@ -62,9 +62,12 @@ export function Menu(): JSX.Element {
       <ul className={cn(styles.firstLevelList)}>
         {firstLevelMenu.map((firstLevelMenu) => {
           return (
-            <li key={firstLevelMenu.route} className={cn(styles.firstLevelLI, {
-              [styles.firstLevelActive]: firstLevelMenu.id === firstCategory,
-            })}>
+            <li
+              key={firstLevelMenu.route} className={cn(styles.firstLevelLI, {
+                [styles.firstLevelActive]: firstLevelMenu.id === firstCategory,
+              })}
+              aria-expanded={firstLevelMenu.id === firstCategory}
+            >
               <Link href={`/${firstLevelMenu.route}`}>
                 <a>
                   {firstLevelMenu.icon}
@@ -106,7 +109,11 @@ export function Menu(): JSX.Element {
               <li key={menuItem._id.secondCategory} className={cn(styles.secondLevelLI, {
                 [styles.secondLevelLIOpen]: menuItem.isOpen,
               })}>
-                <button type='button' onClick={() => toggleSecondLevel(menuItem._id.secondCategory)}>
+                <button
+                  type='button'
+                  onClick={() => toggleSecondLevel(menuItem._id.secondCategory)}
+                  aria-expanded={menuItem.isOpen}
+                >
                   {menuItem._id.secondCategory}
                   <span className={styles.arrow}>
                     <ArrowIcon />
@@ -139,10 +146,18 @@ export function Menu(): JSX.Element {
       >
         {pages.map((page) => {
           return (
-            <motion.li variants={thirdLevelChildrenVariants} key={page.alias} className={cn(styles.thirdLevelLI, {
-              [styles.thirdLevelCurrentCategory]: `/${route}/${page.alias}` === router.asPath
-            })}>
-              <Link href={`/${route}/${page.alias}`}><a>{page.category}</a></Link>
+            <motion.li
+              variants={thirdLevelChildrenVariants}
+              key={page.alias}
+              className={cn(styles.thirdLevelLI, {
+                [styles.thirdLevelCurrentCategory]: `/${route}/${page.alias}` === router.asPath
+              })}
+            >
+              <Link href={`/${route}/${page.alias}`}>
+                <a aria-current={`/${route}/${page.alias}` === router.asPath ? 'page' : false}>
+                  {page.category}
+                </a>
+              </Link>
             </motion.li>
           )
         })}
@@ -151,7 +166,7 @@ export function Menu(): JSX.Element {
   }
 
   return (
-    <nav className={styles.menu}>
+    <nav className={styles.menu} role='navigation'>
       {buildFirstLevel()}
     </nav>
   );

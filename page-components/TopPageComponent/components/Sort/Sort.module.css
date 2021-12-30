@@ -25,7 +25,7 @@
 }
 
 .sort span:hover,
-.sort input:focus + span {
+.sort input:focus+span {
 	cursor: pointer;
 	text-decoration: underline;
 

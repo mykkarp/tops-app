@@ -31,12 +31,13 @@ function Layout({ children }: ILayoutProps): JSX.Element {
       </div>
       <Topbar className={styles.topbar} />
       <Sidebar className={styles.sidebar} />
-      <main className={styles.body}>
+      <main className={styles.body} role='main'>
         <button
           tabIndex={afterSkipFocusable}
           ref={afterSkip}
           onBlur={onBlurAfterSkipHandler}
           className={styles.afterSkip}
+          aria-label='нажмите Tab для перехода к основному контенту'
         />
         {children}
       </main>

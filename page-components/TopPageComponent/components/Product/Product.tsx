@@ -53,17 +53,28 @@ export const Product = motion(forwardRef(({ product, className, ...props }: IPro
         </div>
         <div className={styles.title}><h2>{product.title}</h2></div>
         <div className={styles.price}>
-          {toLocalNum(product.price)} ₽
-          {product.oldPrice && <Tag size='s' color='green'>{toLocalNum(product.price - product.oldPrice)} ₽</Tag>}
+          <span><span className='visually-hidden'>цена</span>{toLocalNum(product.price)} ₽</span>
+          {product.oldPrice && (
+            <Tag size='s' color='green'>
+              <span className='visually-hidden'>скидка</span>
+              {toLocalNum(product.price - product.oldPrice)} ₽
+            </Tag>
+          )}
         </div>
-        <div className={styles.credit}>{toLocalNum(product.credit)} ₽<span>/мес</span></div>
-        <div className={styles.rating}><Rating rating={product.reviewAvg ?? product.initialRating} /></div>
+        <div className={styles.credit}>
+          <span className='visually-hidden'>в кредит</span>
+          {toLocalNum(product.credit)} ₽<span className={styles.month}>/мес</span>
+        </div>
+        <div className={styles.rating}>
+          <span className='visually-hidden'>рейтинг {product.reviewAvg ?? product.initialRating} звёзд</span>
+          <Rating rating={product.reviewAvg ?? product.initialRating} />
+        </div>
         <div className={styles.tags}>
           {product.categories.map(category => <Tag key={category} size='s' color='ghost'>{category}</Tag>)}
         </div>
-        <legend className={styles.priceTitle}>цена</legend>
-        <legend className={styles.creditTitle}>в кредит</legend>
-        <legend className={styles.ratingTitle}><button onClick={scrollToFormHandler}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</button></legend>
+        <span className={styles.priceTitle} aria-hidden='true'>цена</span>
+        <span className={styles.creditTitle} aria-hidden='true'>в кредит</span>
+        <span className={styles.ratingTitle}><button onClick={scrollToFormHandler}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</button></span>
         <Divider className={styles.hr} />
         <Ptag
           className={cn(styles.description, {
@@ -105,6 +116,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: IPro
             appearance='ghost'
             arrow={isReviewsOpen ? 'down' : 'right'}
             onClick={toggleReviews}
+            aria-expanded={isReviewsOpen}
           >
             Читать отзывы
           </Button>

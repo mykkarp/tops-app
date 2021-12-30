@@ -78,6 +78,11 @@
 	line-height: 27px;
 }
 
+.credit .month {
+	font-size: 14px;
+	line-height: 19px;
+}
+
 .rating {
 	align-self: center;
 }
@@ -90,9 +95,8 @@
 	line-height: 19px;
 }
 
-.credit span {
-	font-size: 14px;
-	line-height: 19px;
+.ratingTitle {
+	padding: 2px 0px 0px 0px;
 }
 
 .price div {

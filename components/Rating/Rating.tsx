@@ -22,6 +22,12 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
             onClick={() => onClickHandler(index + 1)}
             disabled={!isEditable}
             name='rating'
+            role={isEditable ? 'slider' : ''}
+            aria-valuenow={rating}
+            aria-valuemin={1}
+            aria-valuemax={5}
+            aria-label={isEditable ? 'укажите рейтинг' : `рейтинг ${rating}`}
+            aria-invalid={!!error}
           />
           <StarIcon
             className={cn(styles.star, {
@@ -48,7 +54,7 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
       {...props}
     >
       {ratingArray.map((ratingItem: JSX.Element, index: number) => <label key={index}>{ratingItem}</label>)}
-      {error && <span className={styles.errorMessage}>{error.message}</span>}
+      {error && <span role='alert' className={styles.errorMessage}>{error.message}</span>}
     </fieldset>
   );
 });

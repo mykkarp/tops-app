@@ -16,7 +16,6 @@ export function Sort({ sort, setSort, className, ...props }: ISortProps): JSX.El
           onClick={() => setSort(ratingSortAction())}
           aria-selected={sort === SortEnum.Rating}
           name='sorting'
-          tabIndex={0}
         />
         <span
           className={cn({
@@ -28,7 +27,6 @@ export function Sort({ sort, setSort, className, ...props }: ISortProps): JSX.El
       </label>
       <label>
         <input
-          tabIndex={0}
           type='radio'
           onClick={() => setSort(priceSortAction())}
           aria-selected={sort === SortEnum.Price}

@@ -27,6 +27,7 @@ export function Search({ className, ...props }: ISearchProps): JSX.Element {
 
   return (
     <form
+      role='search'
       className={cn(className, styles.search)}
       onSubmit={goToSearch}
       {...props}

@@ -68,8 +68,16 @@
 	background-color: transparent;
 }
 
+.buttonClose:focus {
+	box-shadow: 0 0 0 1px var(--green);
+}
+
 .errorClose path {
 	stroke: var(--tomato-dark);
+}
+
+.errorClose:focus {
+	box-shadow: 0 0 0 1px var(--tomato-dark);
 }
 
 @media screen and (max-width: 1125px) {

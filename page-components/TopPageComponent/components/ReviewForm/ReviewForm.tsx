@@ -9,11 +9,12 @@ import { API } from '../../../../helpers/api';
 import { ForwardedRef, forwardRef, useState } from 'react';
 
 export const ReviewForm = forwardRef(({ productId, className, ...props }: IReviewFormProps, ref: ForwardedRef<HTMLFormElement>): JSX.Element => {
-  const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IForm>();
+  const { register, control, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<IForm>();
   const [isSuccessSent, setIsSuccessSent] = useState<boolean>(false);
   const [failedSentMessage, setFailedSentMessage] = useState<string>('');
 
   const onSubmitHandler = async (formData: IForm) => {
+    clearErrors();
     try {
       const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
       if (data.message) {
@@ -37,12 +38,14 @@ export const ReviewForm = forwardRef(({ productId, className, ...props }: IRevie
           type='text'
           placeholder='Имя'
           error={errors.name}
+          aria-invalid={!!errors.name}
         />
         <Input
           {...register('title', { validate: (value) => { return !!value.trim() || 'Заполните заголовок' } })}
           type='text'
           placeholder='Заголовок отзыва'
           error={errors.title}
+          aria-invalid={!!errors.title}
         />
         <div className={styles.rating}>
           <span>Оценка:</span>
@@ -69,6 +72,8 @@ export const ReviewForm = forwardRef(({ productId, className, ...props }: IRevie
           )}
           placeholder='Текст отзыва'
           error={errors.description}
+          aria-label='текст отзыва'
+          aria-invalid={!!errors.description}
         />
         <div className={styles.submit}>
           <Button type='submit' appearance='primary' className={styles.send}>Отправить</Button>
@@ -76,7 +81,7 @@ export const ReviewForm = forwardRef(({ productId, className, ...props }: IRevie
         </div>
       </form>
       {isSuccessSent && (
-        <div className={cn(styles.success, styles.panel)}>
+        <div className={cn(styles.success, styles.panel)} role='alert'>
           <div className={styles.successTitle}>Ваш отзыв отправлен!</div>
           <div className={styles.description}>
             Спасибо, ваш отзыв будет опубликован после проверки.
@@ -85,13 +90,14 @@ export const ReviewForm = forwardRef(({ productId, className, ...props }: IRevie
             onClick={() => setIsSuccessSent(false)}
             type='button'
             className={styles.buttonClose}
+            aria-label='закрыть оповещение'
           >
             <CloseIcon />
           </button>
         </div>
       )}
       {failedSentMessage && (
-        <div className={cn(styles.error, styles.panel)}>
+        <div className={cn(styles.error, styles.panel)} role='alert'>
           <div className={styles.description}>
             {failedSentMessage}
           </div>
@@ -99,6 +105,7 @@ export const ReviewForm = forwardRef(({ productId, className, ...props }: IRevie
             onClick={() => setFailedSentMessage('')}
             type='button'
             className={cn(styles.errorClose, styles.buttonClose)}
+            aria-label='закрыть оповещение'
           >
             <CloseIcon />
           </button>
