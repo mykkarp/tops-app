@@ -51,7 +51,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: IPro
             height={70}
           />
         </div>
-        <div className={styles.title}><Htag tag="h3">{product.title}</Htag></div>
+        <div className={styles.title}><h2>{product.title}</h2></div>
         <div className={styles.price}>
           {toLocalNum(product.price)} ₽
           {product.oldPrice && <Tag size='s' color='green'>{toLocalNum(product.price - product.oldPrice)} ₽</Tag>}

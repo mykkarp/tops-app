@@ -64,6 +64,12 @@
 	align-self: center;
 }
 
+.title h2 {
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 27px;
+}
+
 .price,
 .credit {
 	align-self: center;
@@ -189,8 +195,9 @@
 
 .ratingTitle button:hover,
 .ratingTitle button:focus {
-	color: var(--primary-hover);
 	text-decoration: underline;
+
+	color: var(--primary-hover);
 }
 
 @media screen and (max-width: 1320px) {

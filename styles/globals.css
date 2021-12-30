@@ -2,16 +2,16 @@
 
 :root {
 	--black: #3B434E;
-	--gray-dark: #6c7077;
-	--gray: #8a99b7;
+	--gray-dark: #6C7077;
+	--gray: #8A99B7;
 	--gray-light: #EBEBEB;
 	--white: white;
-	--primary: #7351f5;
+	--primary: #7351F5;
 	--primary-hover: #4C28DB;
 	--tomato-light: #FCA899;
 	--tomato: #FC836D;
 	--tomato-dark: #DA4F36;
-	--green: #007b48;
+	--green: #007B48;
 	--green-light: #C8F8E4;
 	--font-family: 'Noto Sans KR', sans-serif;
 }

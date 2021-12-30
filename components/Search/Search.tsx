@@ -41,6 +41,7 @@ export function Search({ className, ...props }: ISearchProps): JSX.Element {
         appearance='primary'
         className={styles.button}
         type='submit'
+        aria-label='искать по сайту'
       >
         <SearchIcon />
       </Button>

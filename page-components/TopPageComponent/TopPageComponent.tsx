@@ -22,7 +22,7 @@ export function TopPageComponent({ page, products, firstCategory }: TopPageCompo
     <>
       <header className={styles.header}>
         <Htag tag='h1'>{page.title}</Htag>
-        {products && <Tag color='gray' size='m'>{products.length}</Tag>}
+        {products && <Tag color='gray' size='m' aria-label={`${products.length} элементов`}>{products.length}</Tag>}
         <Sort sort={sort} setSort={setSort} />
       </header>
       <section>

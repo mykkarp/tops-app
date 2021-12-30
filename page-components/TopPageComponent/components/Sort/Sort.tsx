@@ -6,28 +6,42 @@ import { priceSortAction, ratingSortAction, SortEnum } from './sort.actions';
 
 export function Sort({ sort, setSort, className, ...props }: ISortProps): JSX.Element {
   return (
-    <div
+    <fieldset
       className={cn(className, styles.sort)}
       {...props}
     >
-      <button
-        type='button'
-        onClick={() => setSort(ratingSortAction())}
-        className={cn({
-          [styles.active]: sort === SortEnum.Rating,
-        })}
-      >
-        <SortIcon />По рейтингу
-      </button>
-      <button
-        type='button'
-        onClick={() => setSort(priceSortAction())}
-        className={cn({
-          [styles.active]: sort === SortEnum.Price,
-        })}
-      >
-        <SortIcon />По цене
-      </button>
-    </div>
+      <label>
+        <input
+          type='radio'
+          onClick={() => setSort(ratingSortAction())}
+          aria-selected={sort === SortEnum.Rating}
+          name='sorting'
+          tabIndex={0}
+        />
+        <span
+          className={cn({
+            [styles.active]: sort === SortEnum.Rating,
+          })}
+        >
+          <SortIcon />По рейтингу
+        </span>
+      </label>
+      <label>
+        <input
+          tabIndex={0}
+          type='radio'
+          onClick={() => setSort(priceSortAction())}
+          aria-selected={sort === SortEnum.Price}
+          name='sorting'
+        />
+        <span
+          className={cn({
+            [styles.active]: sort === SortEnum.Price,
+          })}
+        >
+          <SortIcon />По цене
+        </span>
+      </label>
+    </fieldset>
   );
 }

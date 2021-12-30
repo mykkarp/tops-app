@@ -5,7 +5,17 @@
 	gap: 20px 40px;
 }
 
-.sort button {
+.sort input {
+	position: absolute;
+
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+
+	width: 1px;
+	height: 1px;
+}
+
+.sort span {
 	text-align: end;
 
 	background-color: transparent;
@@ -14,12 +24,13 @@
 	line-height: 1.57rem;
 }
 
-.sort button:focus,
-.sort button:hover {
-	color: var(--primary-hover);
+.sort span:hover,
+.sort input:focus + span {
+	cursor: pointer;
 	text-decoration: underline;
-}
 
+	color: var(--primary-hover);
+}
 
 .sort svg {
 	display: none;
