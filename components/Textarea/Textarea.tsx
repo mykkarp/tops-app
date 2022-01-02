@@ -16,4 +16,4 @@ export const Textarea = forwardRef(({ error, className, ...props }: ITextareaPro
       {error && (<span role='alert' className={styles.errorMessage}>{error.message}</span>)}
     </div>
   );
-})
+});

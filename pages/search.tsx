@@ -9,8 +9,8 @@ const Search = (): JSX.Element => {
     <>
       Search
     </>
-  )
-}
+  );
+};
 
 export default withLayout(Search);
 
@@ -24,8 +24,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       menu,
       firstCategory
     }
-  }
-}
+  };
+};
 
 interface HomeProps extends Record<string, unknown> {
   menu: MenuItem[];

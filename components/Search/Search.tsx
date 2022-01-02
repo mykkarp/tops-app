@@ -12,7 +12,7 @@ export function Search({ className, ...props }: ISearchProps): JSX.Element {
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
-  }
+  };
 
   const goToSearch = (event: FormEvent) => {
     event.preventDefault();
@@ -23,7 +23,7 @@ export function Search({ className, ...props }: ISearchProps): JSX.Element {
         query: search
       }
     });
-  }
+  };
 
   return (
     <form

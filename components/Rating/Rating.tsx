@@ -1,17 +1,17 @@
 import IRatingProps from './IRating.props';
 import styles from "./Rating.module.css";
 import cn from 'classnames';
-import { ForwardedRef, forwardRef, KeyboardEvent, useEffect, useState } from 'react';
+import { ForwardedRef, forwardRef, useEffect, useState } from 'react';
 import StarIcon from './star.svg';
 
 export const Rating = forwardRef(({ error, isEditable = false, rating, setRating, className, ...props }: IRatingProps, ref: ForwardedRef<HTMLFieldSetElement>): JSX.Element => {
-  const AMOUNT_OF_STARS: number = 5;
+  const AMOUNT_OF_STARS = 5;
   const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(AMOUNT_OF_STARS).fill(<></>));
 
   const onClickHandler = (rating: number) => {
     if (!isEditable || typeof setRating !== 'function') return;
     setRating(rating);
-  }
+  };
 
   const constructRating = (currentRating: number) => {
     const updatedArray = ratingArray.map((_, index: number) => {
@@ -36,10 +36,10 @@ export const Rating = forwardRef(({ error, isEditable = false, rating, setRating
             })}
           />
         </>
-      )
+      );
     });
     setRatingArray(updatedArray);
-  }
+  };
 
   useEffect(() => {
     constructRating(rating);

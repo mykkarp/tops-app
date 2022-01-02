@@ -66,10 +66,7 @@ export const ReviewForm = forwardRef(({ productId, className, ...props }: IRevie
         </div>
         <Textarea
           className={styles.textarea}
-          {...register(
-            'description',
-            { validate: (value) => { return !!value.trim() || 'Заполните отзыв' } }
-          )}
+          {...register('description', { validate: (value) => { return !!value.trim() || 'Заполните отзыв' } })}
           placeholder='Текст отзыва'
           error={errors.description}
           aria-label='текст отзыва'

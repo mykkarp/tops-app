@@ -7,7 +7,7 @@ export const icons = {
   up,
   burger,
   cross
-}
+};
 
 export type IconsTypes = keyof typeof icons;
 

@@ -50,6 +50,8 @@
 
 .characteristics {
 	grid-column: start / middle;
+
+	padding: 0 60px 0 0;
 }
 
 .merits {
@@ -96,7 +98,7 @@
 }
 
 .ratingTitle {
-	padding: 2px 0px 0px 0px;
+	padding: 2px 0 0 0;
 }
 
 .price div {
@@ -161,10 +163,6 @@
 
 .descriptionResetMargin {
 	margin: 0;
-}
-
-.characteristics {
-	padding: 0 60px 0 0;
 }
 
 .characteristic {

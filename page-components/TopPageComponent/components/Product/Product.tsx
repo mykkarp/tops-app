@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { Button, Card, Divider, Htag, Ptag, Rating, Tag } from '../../../../components';
 import { Review, ReviewForm } from '..';
 import { declOfNum, toLocalNum } from '../../../../helpers';
-import Image from 'next/image';
 import { useState, useRef, forwardRef, ForwardedRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -44,7 +43,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: IPro
     <div className={cn(styles.wrapper, className)} ref={ref} {...props}>
       <Card className={styles.product}>
         <div className={styles.logo}>
-          <Image
+          <img
             src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
             alt={product.title}
             width={70}

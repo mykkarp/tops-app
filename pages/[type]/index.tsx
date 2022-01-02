@@ -6,34 +6,34 @@ import { firstLevelMenu } from '../../helpers';
 import { ParsedUrlQuery } from 'node:querystring';
 import { API } from '../../helpers/api';
 
-const Type = ({ firstCategory }: TypeProps): JSX.Element => {
+const Type = ({ firstCategory = 0 }: TypeProps): JSX.Element => {
   return (
     <>
       Type: {firstCategory}
     </>
-  )
-}
+  );
+};
 
 export default withLayout(Type);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: firstLevelMenu.map((menuItem) => `/${menuItem.route}`),
-    fallback: true
-  }
-}
+    fallback: false
+  };
+};
 
 export const getStaticProps: GetStaticProps<TypeProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if (!params) {
     return {
       notFound: true
-    }
+    };
   }
   const firstCategoryItem = firstLevelMenu.find((menuItem) => menuItem.route === params.type);
   if (!firstCategoryItem) {
     return {
       notFound: true
-    }
+    };
   }
   const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
     firstCategory: firstCategoryItem.id
@@ -43,8 +43,8 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({ params }: GetS
       menu,
       firstCategory: firstCategoryItem.id
     }
-  }
-}
+  };
+};
 
 interface TypeProps extends Record<string, unknown> {
   menu: MenuItem[];

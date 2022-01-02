@@ -6,7 +6,7 @@ import axios from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
 import { API } from '../helpers/api';
 
-const Home = ({ menu, firstCategory }: HomeProps): JSX.Element => {
+const Home = (): JSX.Element => {
   const [rating, setRating] = useState<number>(2);
 
   return (
@@ -24,8 +24,8 @@ const Home = ({ menu, firstCategory }: HomeProps): JSX.Element => {
       <Textarea placeholder="test" />
       <ScrollToUp />
     </>
-  )
-}
+  );
+};
 
 export default withLayout(Home);
 
@@ -39,8 +39,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       menu,
       firstCategory
     }
-  }
-}
+  };
+};
 
 interface HomeProps extends Record<string, unknown> {
   menu: MenuItem[];

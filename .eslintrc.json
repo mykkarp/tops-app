@@ -9,6 +9,8 @@
     "@typescript-eslint/semi": [
       "warn"
     ],
+    "@next/next/no-document-import-in-page": 0,
+    "react/display-name": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-empty-interface": [
